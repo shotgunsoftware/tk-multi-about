@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>811</width>
+    <width>836</width>
     <height>487</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Your Current Context</string>
+   <string>The Current Tank Environment</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
@@ -47,6 +47,16 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>The above breakdown shows all the different Shotgun objects that together make out the Current Work Area. Clicking any of the items in the list will take you to that object inside of Shotgun.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tab_2">
@@ -58,13 +68,6 @@
        <string>Active Apps</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>You can double click on an app to jump to its documentation.</string>
-         </property>
-        </widget>
-       </item>
        <item>
         <widget class="AppBrowserWidget" name="app_browser" native="true">
          <property name="sizePolicy">
@@ -81,6 +84,16 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>The list above shows all the different apps that are currently active. You can double click on an app to jump to its documentation.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tab_3">
@@ -92,16 +105,6 @@
        <string>Environment</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>The environment file contains all the settings and configuration for the currently running Tank Apps. The Tank Engine provides core services such as menu management and app startup.</string>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
        <item>
         <widget class="EnvironmentBrowserWidget" name="environment_browser" native="true">
          <property name="sizePolicy">
@@ -115,6 +118,16 @@
            <width>380</width>
            <height>0</height>
           </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>The environment file contains all the settings and configuration for the currently running Tank Apps. The Tank Engine provides core services such as menu management and app startup.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
          </property>
         </widget>
        </item>

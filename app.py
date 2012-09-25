@@ -21,7 +21,7 @@ class AboutTank(Application):
         import tk_multi_about
         self.app_handler = tk_multi_about.AppHandler(self)        
         # add stuff to main menu
-        self.engine.register_command("Info about current Work Area...", 
+        self.engine.register_command("Work Area Info...", 
                                      self.app_handler.show_dialog, 
                                      {"type": "context_menu"})
 

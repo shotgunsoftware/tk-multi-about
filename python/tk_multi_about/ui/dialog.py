@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialog.ui'
 #
-# Created: Thu Sep 20 14:57:49 2012
+# Created: Tue Sep 25 23:15:01 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PySide import QtCore, QtGui
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(811, 487)
+        Dialog.resize(836, 487)
         self.horizontalLayout = QtGui.QHBoxLayout(Dialog)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.context_overview_tab_widget = QtGui.QTabWidget(Dialog)
@@ -31,6 +31,10 @@ class Ui_Dialog(object):
         self.context_browser.setMinimumSize(QtCore.QSize(380, 0))
         self.context_browser.setObjectName("context_browser")
         self.verticalLayout_4.addWidget(self.context_browser)
+        self.label_4 = QtGui.QLabel(self.tab)
+        self.label_4.setWordWrap(True)
+        self.label_4.setObjectName("label_4")
+        self.verticalLayout_4.addWidget(self.label_4)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/res/icon_task.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.context_overview_tab_widget.addTab(self.tab, icon, "")
@@ -38,9 +42,6 @@ class Ui_Dialog(object):
         self.tab_2.setObjectName("tab_2")
         self.verticalLayout_2 = QtGui.QVBoxLayout(self.tab_2)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.label_2 = QtGui.QLabel(self.tab_2)
-        self.label_2.setObjectName("label_2")
-        self.verticalLayout_2.addWidget(self.label_2)
         self.app_browser = AppBrowserWidget(self.tab_2)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -50,6 +51,10 @@ class Ui_Dialog(object):
         self.app_browser.setMinimumSize(QtCore.QSize(380, 0))
         self.app_browser.setObjectName("app_browser")
         self.verticalLayout_2.addWidget(self.app_browser)
+        self.label_2 = QtGui.QLabel(self.tab_2)
+        self.label_2.setWordWrap(True)
+        self.label_2.setObjectName("label_2")
+        self.verticalLayout_2.addWidget(self.label_2)
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/res/logo_color_16.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.context_overview_tab_widget.addTab(self.tab_2, icon1, "")
@@ -57,10 +62,6 @@ class Ui_Dialog(object):
         self.tab_3.setObjectName("tab_3")
         self.verticalLayout_3 = QtGui.QVBoxLayout(self.tab_3)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.label_3 = QtGui.QLabel(self.tab_3)
-        self.label_3.setWordWrap(True)
-        self.label_3.setObjectName("label_3")
-        self.verticalLayout_3.addWidget(self.label_3)
         self.environment_browser = EnvironmentBrowserWidget(self.tab_3)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -70,6 +71,10 @@ class Ui_Dialog(object):
         self.environment_browser.setMinimumSize(QtCore.QSize(380, 0))
         self.environment_browser.setObjectName("environment_browser")
         self.verticalLayout_3.addWidget(self.environment_browser)
+        self.label_3 = QtGui.QLabel(self.tab_3)
+        self.label_3.setWordWrap(True)
+        self.label_3.setObjectName("label_3")
+        self.verticalLayout_3.addWidget(self.label_3)
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(":/res/cog_white.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.context_overview_tab_widget.addTab(self.tab_3, icon2, "")
@@ -104,9 +109,10 @@ class Ui_Dialog(object):
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "Your Current Context", None, QtGui.QApplication.UnicodeUTF8))
+        Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "The Current Tank Environment", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_4.setText(QtGui.QApplication.translate("Dialog", "The above breakdown shows all the different Shotgun objects that together make out the Current Work Area. Clicking any of the items in the list will take you to that object inside of Shotgun.", None, QtGui.QApplication.UnicodeUTF8))
         self.context_overview_tab_widget.setTabText(self.context_overview_tab_widget.indexOf(self.tab), QtGui.QApplication.translate("Dialog", "Current Context", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("Dialog", "You can double click on an app to jump to its documentation.", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(QtGui.QApplication.translate("Dialog", "The list above shows all the different apps that are currently active. You can double click on an app to jump to its documentation.", None, QtGui.QApplication.UnicodeUTF8))
         self.context_overview_tab_widget.setTabText(self.context_overview_tab_widget.indexOf(self.tab_2), QtGui.QApplication.translate("Dialog", "Active Apps", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("Dialog", "The environment file contains all the settings and configuration for the currently running Tank Apps. The Tank Engine provides core services such as menu management and app startup.", None, QtGui.QApplication.UnicodeUTF8))
         self.context_overview_tab_widget.setTabText(self.context_overview_tab_widget.indexOf(self.tab_3), QtGui.QApplication.translate("Dialog", "Environment", None, QtGui.QApplication.UnicodeUTF8))
