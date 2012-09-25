@@ -22,8 +22,7 @@ class EnvironmentBrowserWidget(BrowserWidget):
     
     def get_data(self, data):
     
-        # the app instance here is actually the engine...
-        engine = self._app
+        engine = self._app.engine
             
         data = {}
         

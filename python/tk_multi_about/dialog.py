@@ -8,7 +8,6 @@ import unicodedata
 import os
 import sys
 import threading
-import pymel.core as pm
 
 from PySide import QtCore, QtGui
 from .ui.dialog import Ui_Dialog
@@ -93,11 +92,11 @@ class AppDialog(QtGui.QDialog):
         self.ui.environment_browser.load({})
 
     def open_helpdesk(self):
-        pm.showHelp("http://tank.zendesk.com", absolute=True)
+        QtGui.QDesktopServices.openUrl("http://tank.zendesk.com")
     
     def open_platform_docs(self):        
         if self._app.tank.documentation_url:
-            pm.showHelp(self._app.tank.documentation_url, absolute=True)
+            QtGui.QDesktopServices.openUrl(self._app.tank.documentation_url)
 
         else:
             QtGui.QMessageBox.critical(self, 
@@ -148,7 +147,7 @@ class AppDialog(QtGui.QDialog):
         
         data = curr_selection.sg_data
         sg_url = "%s/detail/%s/%d" % (self._app.shotgun.base_url, data["type"], data["id"])        
-        pm.showHelp(sg_url, absolute=True)
+        QtGui.QDesktopServices.openUrl(sg_url)
         
 
     def show_app_in_app_store(self):
@@ -165,7 +164,7 @@ class AppDialog(QtGui.QDialog):
                                        "No Documentation found!",
                                        "Sorry, this app does not have any associated documentation!")
         else:
-            pm.showHelp(doc_url, absolute=True)
+            QtGui.QDesktopServices.openUrl(doc_url)
 
     def show_engine_in_app_store(self):
         """
@@ -177,5 +176,6 @@ class AppDialog(QtGui.QDialog):
         
         doc_url = curr_selection.data.get("documentation_url")
         if doc_url:
-            pm.showHelp(doc_url, absolute=True)
+            QtGui.QDesktopServices.openUrl(doc_url)
+
         

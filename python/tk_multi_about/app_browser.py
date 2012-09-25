@@ -22,11 +22,8 @@ class AppBrowserWidget(BrowserWidget):
     
     def get_data(self, data):
     
-        # the app instance here is actually the engine...
-        engine = self._app
-        
         data = {}
-        for app in engine.apps.values():
+        for app in self._app.engine.apps.values():
             data[app.name] = {"display_name": app.display_name,
                               "version": app.version,
                               "documentation_url": app.documentation_url,
