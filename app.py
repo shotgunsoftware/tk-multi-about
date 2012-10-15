@@ -18,7 +18,7 @@ class AboutTank(Application):
         """
         Called as the application is being initialized
         """
-        import tk_multi_about
+        tk_multi_about = self.import_module("tk_multi_about")
         self.app_handler = tk_multi_about.AppHandler(self)        
         # add stuff to main menu
         self.engine.register_command("Work Area Info...", 
