@@ -43,7 +43,7 @@ class AppDialog(QtGui.QDialog):
         
         self.ui.jump_to_fs.clicked.connect( self.show_in_fs )
         self.ui.support.clicked.connect( self.open_helpdesk )
-        self.ui.platform_docs.clicked.connect( self.open_platform_docs )
+        self.ui.reload_apps.clicked.connect( self.reload )
                 
         # load data from shotgun
         self.setup_context_list()
@@ -94,15 +94,18 @@ class AppDialog(QtGui.QDialog):
     def open_helpdesk(self):
         QtGui.QDesktopServices.openUrl("http://tank.zendesk.com")
     
-    def open_platform_docs(self):        
-        if self._app.tank.documentation_url:
-            QtGui.QDesktopServices.openUrl(self._app.tank.documentation_url)
-
-        else:
-            QtGui.QMessageBox.critical(self, 
-                                       "No Documentation found!",
-                                       "Your version of the tank platform does not have documentation")
-                
+    def reload(self):
+        # Try to create path for the context.  
+        try:
+            current_context = self._app.context            
+            current_engine_name = self._app.engine.name
+            if tank.platform.current_engine(): 
+                tank.platform.current_engine().destroy()
+            tank.platform.start_engine(current_engine_name, current_context.tank, current_context)
+        except Exception, e:
+            self._app.log_exception("Could not restart the engine!")
+        
+    
     def show_in_fs(self):
         """
         Jump from context to FS

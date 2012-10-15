@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialog.ui'
 #
-# Created: Tue Sep 25 23:15:01 2012
+# Created: Mon Oct 15 11:37:02 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -90,9 +90,9 @@ class Ui_Dialog(object):
         self.jump_to_fs = QtGui.QPushButton(Dialog)
         self.jump_to_fs.setObjectName("jump_to_fs")
         self.verticalLayout.addWidget(self.jump_to_fs)
-        self.platform_docs = QtGui.QPushButton(Dialog)
-        self.platform_docs.setObjectName("platform_docs")
-        self.verticalLayout.addWidget(self.platform_docs)
+        self.reload_apps = QtGui.QPushButton(Dialog)
+        self.reload_apps.setObjectName("reload_apps")
+        self.verticalLayout.addWidget(self.reload_apps)
         self.support = QtGui.QPushButton(Dialog)
         self.support.setObjectName("support")
         self.verticalLayout.addWidget(self.support)
@@ -117,8 +117,8 @@ class Ui_Dialog(object):
         self.label_3.setText(QtGui.QApplication.translate("Dialog", "The environment file contains all the settings and configuration for the currently running Tank Apps. The Tank Engine provides core services such as menu management and app startup.", None, QtGui.QApplication.UnicodeUTF8))
         self.context_overview_tab_widget.setTabText(self.context_overview_tab_widget.indexOf(self.tab_3), QtGui.QApplication.translate("Dialog", "Environment", None, QtGui.QApplication.UnicodeUTF8))
         self.jump_to_fs.setText(QtGui.QApplication.translate("Dialog", "Jump to the File System", None, QtGui.QApplication.UnicodeUTF8))
-        self.platform_docs.setText(QtGui.QApplication.translate("Dialog", "Platform Documentation", None, QtGui.QApplication.UnicodeUTF8))
-        self.support.setText(QtGui.QApplication.translate("Dialog", "Help Desk and Support", None, QtGui.QApplication.UnicodeUTF8))
+        self.reload_apps.setText(QtGui.QApplication.translate("Dialog", "Reload Engine and Apps", None, QtGui.QApplication.UnicodeUTF8))
+        self.support.setText(QtGui.QApplication.translate("Dialog", "Documentation and Support", None, QtGui.QApplication.UnicodeUTF8))
         self.close.setText(QtGui.QApplication.translate("Dialog", "Close", None, QtGui.QApplication.UnicodeUTF8))
 
 from ..context_browser import ContextBrowserWidget

@@ -158,16 +158,16 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="platform_docs">
+      <widget class="QPushButton" name="reload_apps">
        <property name="text">
-        <string>Platform Documentation</string>
+        <string>Reload Engine and Apps</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="support">
        <property name="text">
-        <string>Help Desk and Support</string>
+        <string>Documentation and Support</string>
        </property>
       </widget>
      </item>
