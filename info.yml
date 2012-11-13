@@ -22,3 +22,7 @@ requires_shotgun_version:
 requires_core_version: "v0.12.0"
 requires_engine_version:
 
+# the frameworks required to run this app
+frameworks:
+    - {"name": "tk-framework-widget", "version": "v0.1.0"}
+    

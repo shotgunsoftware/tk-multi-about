@@ -10,11 +10,11 @@ import threading
 
 
 from PySide import QtCore, QtGui
-from .browser_widget import BrowserWidget
-from .browser_widget import ListItem
-from .browser_widget import ListHeader
 
-class ContextBrowserWidget(BrowserWidget):
+browser_widget = tank.platform.import_framework("tk-framework-widget", "browser_widget")
+
+
+class ContextBrowserWidget(browser_widget.BrowserWidget):
 
     
     def __init__(self, parent=None):
@@ -69,7 +69,7 @@ class ContextBrowserWidget(BrowserWidget):
         if result.get("project"):
             d = result["project"]
             
-            i = self.add_item(ListItem)
+            i = self.add_item(browser_widget.ListItem)
             details = []
             details.append("<b>Project %s</b>" % d.get("name"))
             details.append( d.get("sg_description") if d.get("sg_description") else "No Description" )            
@@ -83,7 +83,7 @@ class ContextBrowserWidget(BrowserWidget):
         if result.get("entity"):
             d = result["entity"]
             
-            i = self.add_item(ListItem)
+            i = self.add_item(browser_widget.ListItem)
             details = []
             details.append("<b>%s %s</b>" % (d.get("type"), d.get("code")))
             details.append( d.get("description") if d.get("description") else "No Description" )         
@@ -96,7 +96,7 @@ class ContextBrowserWidget(BrowserWidget):
         
         for d in result["additional"]:
             
-            i = self.add_item(ListItem)
+            i = self.add_item(browser_widget.ListItem)
             details = []
             details.append("<b>%s %s</b>" % (d.get("type"), d.get("code")))
             details.append( d.get("description") if d.get("description") else "No Description" )    
@@ -110,7 +110,7 @@ class ContextBrowserWidget(BrowserWidget):
         if result.get("step"):
             d = result["step"]
             
-            i = self.add_item(ListItem)
+            i = self.add_item(browser_widget.ListItem)
             details = []
             details.append("<b>Pipeline Step %s</b>" % d.get("code", ""))
             details.append( d.get("description") if d.get("description") else "No Description" )      
@@ -122,7 +122,7 @@ class ContextBrowserWidget(BrowserWidget):
         if result.get("task"):
             d = result["task"]
             
-            i = self.add_item(ListItem)
+            i = self.add_item(browser_widget.ListItem)
             details = []
             details.append("<b>Task %s</b>" % d.get("content"))
             details.append("Status: %s" % d.get("sg_status_list"))

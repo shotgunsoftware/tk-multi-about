@@ -10,11 +10,9 @@ import threading
 
 
 from PySide import QtCore, QtGui
-from .browser_widget import BrowserWidget
-from .browser_widget import ListItem
-from .browser_widget import ListHeader
+browser_widget = tank.platform.import_framework("tk-framework-widget", "browser_widget")
 
-class EnvironmentBrowserWidget(BrowserWidget):
+class EnvironmentBrowserWidget(browser_widget.BrowserWidget):
 
     
     def __init__(self, parent=None):
@@ -44,7 +42,7 @@ class EnvironmentBrowserWidget(BrowserWidget):
 
         d = result["engine"]
 
-        i = self.add_item(ListItem)
+        i = self.add_item(browser_widget.ListItem)
         details = []
         details.append("<b>Engine: %s</b>" % d.get("name"))
         details.append("Version: %s" % d.get("version"))
@@ -57,7 +55,7 @@ class EnvironmentBrowserWidget(BrowserWidget):
         
         d = result["environment"]
 
-        i = self.add_item(ListItem)
+        i = self.add_item(browser_widget.ListItem)
         details = []
         details.append("<b>Environment: %s</b>" % d.get("name"))
         details.append("Path: %s" % d.get("disk_location"))

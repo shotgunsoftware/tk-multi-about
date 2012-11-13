@@ -10,11 +10,10 @@ import threading
 
 
 from PySide import QtCore, QtGui
-from .browser_widget import BrowserWidget
-from .browser_widget import ListItem
-from .browser_widget import ListHeader
 
-class AppBrowserWidget(BrowserWidget):
+browser_widget = tank.platform.import_framework("tk-framework-widget", "browser_widget")
+
+class AppBrowserWidget(browser_widget.BrowserWidget):
 
     
     def __init__(self, parent=None):
@@ -36,7 +35,7 @@ class AppBrowserWidget(BrowserWidget):
         
         for app in result.values():
         
-            i = self.add_item(ListItem)
+            i = self.add_item(browser_widget.ListItem)
             details = []
             details.append("<b>%s</b>" % app.get("display_name"))
             details.append("Version: %s" % app.get("version"))
