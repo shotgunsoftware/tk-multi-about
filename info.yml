@@ -13,3 +13,12 @@ supported_engines: [tk-nuke, tk-maya, tk-motionbuilder]
 # the Shotgun fields that this engine needs in order to operate correctly
 requires_shotgun_fields:
         
+# More verbose description of this item 
+display_name: "About Tank"
+description: "Shows a breakdown of your current environment and configuration."
+
+# Required minimum versions for this item to run
+requires_shotgun_version:
+requires_core_version: "v0.12.0"
+requires_engine_version:
+
