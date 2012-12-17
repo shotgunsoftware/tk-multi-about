@@ -17,7 +17,7 @@ class AppBrowserWidget(browser_widget.BrowserWidget):
 
     
     def __init__(self, parent=None):
-        BrowserWidget.__init__(self, parent)
+        browser_widget.BrowserWidget.__init__(self, parent)
     
     def get_data(self, data):
     
