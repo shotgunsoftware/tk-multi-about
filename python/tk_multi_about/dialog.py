@@ -3,7 +3,6 @@ Copyright (c) 2012 Shotgun Software, Inc
 ----------------------------------------------------
 """
 import tank
-import platform
 import unicodedata
 import os
 import sys
@@ -123,14 +122,14 @@ class AppDialog(QtGui.QDialog):
         for disk_location in paths:
                 
             # get the setting        
-            system = platform.system()
+            system = sys.platform
             
             # run the app
-            if system == "Linux":
+            if system == "linux2":
                 cmd = 'xdg-open "%s"' % disk_location
-            elif system == "Darwin":
+            elif system == "darwin":
                 cmd = 'open "%s"' % disk_location
-            elif system == "Windows":
+            elif system == "win32":
                 cmd = 'cmd.exe /C start "Folder" "%s"' % disk_location
             else:
                 raise Exception("Platform '%s' is not supported." % system)
