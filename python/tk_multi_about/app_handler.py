@@ -30,5 +30,5 @@ class AppHandler(object):
         # Keep the dialog object from being GC-ed by storing in a member var
         self._dialogs.append(dialog)
         # run modal dialogue
-        self._dialog.show()
+        dialog.show()
         
