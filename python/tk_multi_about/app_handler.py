@@ -25,16 +25,10 @@ class AppHandler(object):
         # command line mode,
         from .dialog import AppDialog
         
-        # some QT notes here. Need to keep the dialog object from being GC-ed
-        # otherwise pyside will go hara kiri. QT has its own loop to track
-        # objects and destroy them and unless we store the dialog as a member
-        self._dialog = tank.platform.qt.create_dialog(AppDialog)
-        self._dialog.post_init(self._app)
-
-        # hack - pyside can crash for some reason when a dialog object is GCed
-        # so keep all of them in memory. PySide FAIL
-        self._dialogs.append(self._dialog)
-        
+        dialog = tank.platform.qt.create_dialog(AppDialog)
+        dialog.post_init(self._app)
+        # Keep the dialog object from being GC-ed by storing in a member var
+        self._dialogs.append(dialog)
         # run modal dialogue
         self._dialog.show()
         
