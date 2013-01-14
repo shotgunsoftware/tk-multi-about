@@ -19,9 +19,6 @@ class AboutTank(Application):
         Called as the application is being initialized
         """
         tk_multi_about = self.import_module("tk_multi_about")
-        self.app_handler = tk_multi_about.AppHandler(self)        
-        # add stuff to main menu
-        self.engine.register_command("Work Area Info...", 
-                                     self.app_handler.show_dialog, 
-                                     {"type": "context_menu"})
+        cb = lambda : tk_multi_about.show_dialog(self)
+        self.engine.register_command("Work Area Info...", cb, {"type": "context_menu"})
 
