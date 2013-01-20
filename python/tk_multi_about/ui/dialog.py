@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialog.ui'
 #
-# Created: Mon Oct 15 11:37:02 2012
+# Created: Sat Jan 19 22:29:47 2013
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -105,7 +105,6 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         self.context_overview_tab_widget.setCurrentIndex(0)
-        QtCore.QObject.connect(self.close, QtCore.SIGNAL("clicked()"), Dialog.accept)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
