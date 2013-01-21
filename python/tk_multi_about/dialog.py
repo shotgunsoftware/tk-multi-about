@@ -20,8 +20,6 @@ class AppDialog(QtGui.QWidget):
         self.ui = Ui_Dialog() 
         self.ui.setupUi(self)
         
-        self.exit_code = QtGui.QDialog.Rejected
-        
         self._app = app
         
         # set up the browsers
