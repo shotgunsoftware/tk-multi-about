@@ -2,7 +2,7 @@
 Copyright (c) 2012 Shotgun Software, Inc
 ----------------------------------------------------
 
-An app that launches revolver from nuke
+An app that shows information about the current work area.
 
 """
 
