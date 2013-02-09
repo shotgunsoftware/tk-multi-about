@@ -95,11 +95,17 @@ class AppDialog(QtGui.QWidget):
         """
         
         if self._app.context.entity:
-            paths = self._app.tank.paths_from_entity(self._app.context.entity["type"], 
-                                                     self._app.context.entity["id"])
+            paths = self._app.tank.paths_from_entity(
+                    self._app.context.entity["type"],
+                    self._app.context.entity["id"],
+                    self._app.context,
+            )
         else:
-            paths = self._app.tank.paths_from_entity(self._app.context.project["type"], 
-                                                     self._app.context.project["id"])
+            paths = self._app.tank.paths_from_entity(
+                    self._app.context.project["type"],
+                    self._app.context.project["id"],
+                    self._app.context,
+            )
         
         # launch one window for each location on disk
         # todo: can we do this in a more elegant way?
