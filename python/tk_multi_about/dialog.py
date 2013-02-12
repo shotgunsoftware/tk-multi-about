@@ -94,7 +94,7 @@ class AppDialog(QtGui.QWidget):
         Jump from context to FS
         """
         # launch one window for each location on disk
-        paths = self._engine.context.filesystem_locations
+        paths = self._app.context.filesystem_locations
         for disk_location in paths:
                 
             # get the setting        
