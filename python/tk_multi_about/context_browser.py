@@ -85,7 +85,8 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             
             i = self.add_item(browser_widget.ListItem)
             details = []
-            details.append("<b>%s %s</b>" % (d.get("type"), d.get("code")))
+            nice_name = tank.util.get_entity_type_display_name(self._app.tank, d.get("type"))
+            details.append("<b>%s %s</b>" % (nice_name, d.get("code")))
             details.append( d.get("description") if d.get("description") else "No Description" )         
             i.set_details("<br>".join(details))
             i.sg_data = d
@@ -98,7 +99,8 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             
             i = self.add_item(browser_widget.ListItem)
             details = []
-            details.append("<b>%s %s</b>" % (d.get("type"), d.get("code")))
+            nice_name = tank.util.get_entity_type_display_name(self._app.tank, d.get("type"))
+            details.append("<b>%s %s</b>" % (nice_name, d.get("code")))
             details.append( d.get("description") if d.get("description") else "No Description" )    
             i.set_details("<br>".join(details))
             i.sg_data = d
