@@ -20,5 +20,5 @@ class AboutTank(Application):
         """
         tk_multi_about = self.import_module("tk_multi_about")
         cb = lambda : tk_multi_about.show_dialog(self)
-        self.engine.register_command("work_area_info", cb, {"type": "context_menu", title: "Work Area Info..."})
+        self.engine.register_command("Work Area Info...", cb, {"type": "context_menu"})
 
