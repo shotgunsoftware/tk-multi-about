@@ -2,7 +2,6 @@
 
 # Form implementation generated from reading ui file 'dialog.ui'
 #
-# Created: Sat Jan 19 22:29:47 2013
 #      by: pyside-uic 0.2.13 running on PySide 1.1.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -109,11 +108,11 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "The Current Tank Environment", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_4.setText(QtGui.QApplication.translate("Dialog", "The above breakdown shows all the different Shotgun objects that together make out the Current Work Area. Clicking any of the items in the list will take you to that object inside of Shotgun.", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_4.setText(QtGui.QApplication.translate("Dialog", "The above breakdown shows all the different Shotgun objects that together make up the Current Work Area. Clicking any of the items in the list will take you to that object inside of Shotgun.", None, QtGui.QApplication.UnicodeUTF8))
         self.context_overview_tab_widget.setTabText(self.context_overview_tab_widget.indexOf(self.tab), QtGui.QApplication.translate("Dialog", "Current Context", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("Dialog", "The list above shows all the different apps that are currently active. You can double click on an app to jump to its documentation.", None, QtGui.QApplication.UnicodeUTF8))
         self.context_overview_tab_widget.setTabText(self.context_overview_tab_widget.indexOf(self.tab_2), QtGui.QApplication.translate("Dialog", "Active Apps", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_3.setText(QtGui.QApplication.translate("Dialog", "The environment file contains all the settings and configuration for the currently running Tank Apps. The Tank Engine provides core services such as menu management and app startup.", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_3.setText(QtGui.QApplication.translate("Dialog", "The environment file contains all the settings and configuration for the currently running Shotgun Apps. The Engine provides core services such as menu management and app startup.", None, QtGui.QApplication.UnicodeUTF8))
         self.context_overview_tab_widget.setTabText(self.context_overview_tab_widget.indexOf(self.tab_3), QtGui.QApplication.translate("Dialog", "Environment", None, QtGui.QApplication.UnicodeUTF8))
         self.jump_to_fs.setText(QtGui.QApplication.translate("Dialog", "Jump to the File System", None, QtGui.QApplication.UnicodeUTF8))
         self.reload_apps.setText(QtGui.QApplication.translate("Dialog", "Reload Engine and Apps", None, QtGui.QApplication.UnicodeUTF8))

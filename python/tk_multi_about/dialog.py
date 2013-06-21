@@ -29,11 +29,11 @@ class AppDialog(QtGui.QWidget):
         self.ui.context_browser.action_requested.connect( self.show_in_sg )
         
         self.ui.app_browser.set_app(self._app)
-        self.ui.app_browser.set_label("Currently Running Tank Apps")
+        self.ui.app_browser.set_label("Currently Running Apps")
         self.ui.app_browser.action_requested.connect( self.show_app_in_app_store )        
 
         self.ui.environment_browser.set_app(self._app)
-        self.ui.environment_browser.set_label("Your current Environment")
+        self.ui.environment_browser.set_label("The Current Environment")
         self.ui.environment_browser.enable_search(False)        
         self.ui.environment_browser.action_requested.connect( self.show_engine_in_app_store )
         
