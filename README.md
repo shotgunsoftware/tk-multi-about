@@ -1,4 +1,4 @@
 tk-multi-about
 ==============
 
-About the current Tank configuration
+About the current configuration

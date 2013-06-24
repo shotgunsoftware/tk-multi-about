@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>The Current Tank Environment</string>
+   <string>The Current Sgtk Environment</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
