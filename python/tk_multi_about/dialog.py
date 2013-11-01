@@ -81,7 +81,7 @@ class AppDialog(QtGui.QWidget):
         self.ui.environment_browser.load({})
 
     def open_helpdesk(self):
-        QtGui.QDesktopServices.openUrl("http://tank.zendesk.com")
+        QtGui.QDesktopServices.openUrl(QtCore.QUrl("http://tank.zendesk.com"))
     
     def reload(self):
         # Try to create path for the context.  
@@ -131,7 +131,7 @@ class AppDialog(QtGui.QWidget):
         
         data = curr_selection.sg_data
         sg_url = "%s/detail/%s/%d" % (self._app.shotgun.base_url, data["type"], data["id"])        
-        QtGui.QDesktopServices.openUrl(sg_url)
+        QtGui.QDesktopServices.openUrl(QtCore.QUrl(sg_url))
         
 
     def show_app_in_app_store(self):
@@ -148,7 +148,7 @@ class AppDialog(QtGui.QWidget):
                                        "No Documentation found!",
                                        "Sorry, this app does not have any associated documentation!")
         else:
-            QtGui.QDesktopServices.openUrl(doc_url)
+            QtGui.QDesktopServices.openUrl(QtCore.QUrl(doc_url))
 
     def show_engine_in_app_store(self):
         """
@@ -160,6 +160,6 @@ class AppDialog(QtGui.QWidget):
         
         doc_url = curr_selection.data.get("documentation_url")
         if doc_url:
-            QtGui.QDesktopServices.openUrl(doc_url)
+            QtGui.QDesktopServices.openUrl(QtCore.QUrl(doc_url))
 
         
