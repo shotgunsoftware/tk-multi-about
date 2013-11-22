@@ -86,6 +86,13 @@ class AppDialog(QtGui.QWidget):
     def reload(self):
         # Try to create path for the context.  
         try:
+            # first, reload the template defs
+            self._app.tank.reload_templates()
+        except tank.TankError, e:
+            self._app.log_error(e)
+
+        try:
+            # now attempt restarting the engine
             current_context = self._app.context            
             current_engine_name = self._app.engine.name
             if tank.platform.current_engine(): 
