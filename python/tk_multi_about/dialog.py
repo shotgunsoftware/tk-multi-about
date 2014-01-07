@@ -137,6 +137,11 @@ class AppDialog(QtGui.QWidget):
             return
         
         data = curr_selection.sg_data
+        
+        # steps do not have detail pages in shotgun so omit those
+        if data["type"] == "Step":
+            return
+        
         sg_url = "%s/detail/%s/%d" % (self._app.shotgun.base_url, data["type"], data["id"])        
         QtGui.QDesktopServices.openUrl(QtCore.QUrl(sg_url))
         
