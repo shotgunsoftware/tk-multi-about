@@ -15,6 +15,7 @@ import sys
 import threading
 
 from tank.platform.qt import QtCore, QtGui
+from tank.platform import restart
 from .ui.dialog import Ui_Dialog
 
 class AppDialog(QtGui.QWidget):
@@ -84,23 +85,10 @@ class AppDialog(QtGui.QWidget):
         QtGui.QDesktopServices.openUrl(QtCore.QUrl("http://tank.zendesk.com"))
     
     def reload(self):
-        # Try to create path for the context.  
-        try:
-            # first, reload the template defs
-            self._app.tank.reload_templates()
-        except tank.TankError, e:
-            self._app.log_error(e)
-
-        try:
-            # now attempt restarting the engine
-            current_context = self._app.context            
-            current_engine_name = self._app.engine.name
-            if tank.platform.current_engine(): 
-                tank.platform.current_engine().destroy()
-            tank.platform.start_engine(current_engine_name, current_context.tank, current_context)
-        except Exception, e:
-            self._app.log_exception("Could not restart the engine!")
-        
+        """
+        Reload templates and restart engine.
+        """
+        restart()
     
     def show_in_fs(self):
         """
