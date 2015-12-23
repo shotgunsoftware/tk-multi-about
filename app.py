@@ -29,3 +29,10 @@ class AboutTank(Application):
         cb = lambda : tk_multi_about.show_dialog(self)
         self.engine.register_command("Work Area Info...", cb, {"type": "context_menu", "short_name": "work_area_info"})
 
+    @property
+    def context_change_allowed(self):
+        """
+        Specifies that context changes are allowed.
+        """
+        return True
+
