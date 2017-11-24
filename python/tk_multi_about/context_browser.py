@@ -86,7 +86,7 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             # add the site url
             link_color = self._app.engine.style_constants["SG_HIGHLIGHT_COLOR"]
             full_site_url = result.get("shotgun_url") if result.get("shotgun_url") else ""
-            nice_name_site_url = self._clean_url(full_site_url)
+            nice_name_site_url = self._get_url_nice_name(full_site_url)
             site_display_template = "<a href=\"{url}\" style=\"color:{color}\" >{display_url}</a>"
             site_str = site_display_template.format(url=full_site_url, display_url=nice_name_site_url, color=link_color)
             details.append(site_str)
@@ -169,7 +169,7 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
         widget.ui.details.setOpenExternalLinks(True)
         return widget
 
-    def _clean_url(self, url):
+    def _get_url_nice_name(self, url):
         """
         Removes the "https://", "http://" from the beginning for the url
         :param url: str that is an url.
