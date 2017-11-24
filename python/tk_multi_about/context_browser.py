@@ -85,7 +85,9 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             details = []
             details.append("<b>Project %s</b>" % d.get("name"))
             details.append( d.get("sg_description") if d.get("sg_description") else "No Description" )
-            details.append("Site: %s" % result.get("shotgun_url") if result.get("shotgun_url") else "")
+            site_url = result.get("shotgun_url") if result.get("shotgun_url") else ""
+            site_str= "Site: <a href=\"{url}\" style=\"color:#95b0cb\" >{url}</a> ".format(url=site_url)
+            details.append(site_str)
             i.set_details("<br>".join(details))
             i.sg_data = d
             i.setToolTip("Double click to see more details in Shotgun.")
