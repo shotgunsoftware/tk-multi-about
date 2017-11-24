@@ -8,16 +8,16 @@
 # agreement to the Shotgun Pipeline Toolkit Source Code License. All rights 
 # not expressly granted therein are reserved by Shotgun Software Inc.
 
-import tank
+import sgtk
 import os
 import sys
 import datetime
 import threading 
 
 
-from tank.platform.qt import QtCore, QtGui
+from sgtk.platform.qt import QtCore, QtGui
 
-browser_widget = tank.platform.import_framework("tk-framework-widget", "browser_widget")
+browser_widget = sgtk.platform.import_framework("tk-framework-widget", "browser_widget")
 
 
 class ContextBrowserWidget(browser_widget.BrowserWidget):
@@ -98,7 +98,7 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             
             i = self.add_item(browser_widget.ListItem)
             details = []
-            nice_name = tank.util.get_entity_type_display_name(self._app.tank, d.get("type"))
+            nice_name = sgtk.util.get_entity_type_display_name(self._app.sgtk, d.get("type"))
             details.append("<b>%s %s</b>" % (nice_name, d.get("code")))
             details.append( d.get("description") if d.get("description") else "No Description" )         
             i.set_details("<br>".join(details))
@@ -112,7 +112,7 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             
             i = self.add_item(browser_widget.ListItem)
             details = []
-            nice_name = tank.util.get_entity_type_display_name(self._app.tank, d.get("type"))
+            nice_name = sgtk.util.get_entity_type_display_name(self._app.sgtk, d.get("type"))
             details.append("<b>%s %s</b>" % (nice_name, d.get("code")))
             details.append( d.get("description") if d.get("description") else "No Description" )    
             i.set_details("<br>".join(details))
