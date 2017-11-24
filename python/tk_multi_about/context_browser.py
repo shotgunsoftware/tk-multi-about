@@ -49,7 +49,6 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             data["step"] = self._app.shotgun.find_one("Step", 
                                                       [ ["id", "is", ctx.step["id"]] ], 
                                                       ["code", "description"])
-
             
         if ctx.task:
             # get task data
@@ -74,7 +73,6 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             
     
         return data
-            
 
     def process_result(self, result):
 
@@ -84,13 +82,17 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             i = self.add_item(browser_widget.ListItem)
             details = []
             details.append("<b>Project %s</b>" % d.get("name"))
+
+            # add the site url
+            link_color = self._app.engine.style_constants["SG_HIGHLIGHT_COLOR"]
+            full_site_url = result.get("shotgun_url") if result.get("shotgun_url") else ""
+            nice_name_site_url = self._clean_url(full_site_url)
+            site_display_template = "<a href=\"{url}\" style=\"color:{color}\" >{display_url}</a>"
+            site_str = site_display_template.format(url=full_site_url, display_url=nice_name_site_url, color=link_color)
+            details.append(site_str)
+
             details.append( d.get("sg_description") if d.get("sg_description") else "No Description" )
 
-            link_color = self._app.engine.style_constants.get("SG_HIGHLIGHT_COLOR","#18A7E3")
-            site_url = result.get("shotgun_url") if result.get("shotgun_url") else ""
-            site_str= "Site: <a href=\"{url}\" style=\"color:{color}\" >{url}</a> ".format(url=site_url,
-                                                                                           color=link_color)
-            details.append(site_str)
             i.set_details("<br>".join(details))
             i.sg_data = d
             i.setToolTip("Double click to see more details in Shotgun.")
@@ -157,4 +159,23 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             
             if d.get("image"):
                 i.set_thumbnail(d.get("image"))
-        
+
+    def add_item(self, item_class):
+        """
+        Adds a list item. Returns the created object.
+        We override the base class so we can make the urls clickable
+        """
+        widget = super(ContextBrowserWidget, self).add_item(item_class)
+        widget.ui.details.setOpenExternalLinks(True)
+        return widget
+
+    def _clean_url(self, url):
+        """
+        Removes the "https://", "http://" from the beginning for the url
+        :param url: str that is an url.
+        :return: str url.
+        """
+        for prefix in ["https://", "http://"]:
+            if url.startswith(prefix):
+                return url[len(prefix):]
+        return url
