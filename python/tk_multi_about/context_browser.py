@@ -37,6 +37,12 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             data["project"] = self._app.shotgun.find_one("Project", 
                                                          [ ["id", "is", ctx.project["id"]] ], 
                                                          ["name", "sg_description", "image"])
+
+            if self._app.sgtk.shotgun_url:
+                # we gather the shotgun url for just the site, rather than from the context as this could
+                # look odd if the url points to a task but is displayed under the project heading
+                # when the context contains more than just the project.
+                data["shotgun_url"] = "%s/detail/Project/%d" % (self._app.sgtk.shotgun_url, ctx.project["id"])
             
         if ctx.entity:
             # get entity data
@@ -55,13 +61,6 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             data["task"] = self._app.shotgun.find_one("Task", 
                                                       [ ["id", "is", ctx.task["id"]] ], 
                                                       ["content", "image", "task_assignees", "sg_status_list"])
-
-        if self._app.sgtk.shotgun_url:
-            # we gather the shotgun url for just the site, rather than from the context as this could
-            # look odd if the url points to a task but is displayed under the project heading
-            # when the context contains more than just the project.
-            data["shotgun_url"] = self._app.sgtk.shotgun_url
-
 
         data["additional"] = []            
         for ae in ctx.additional_entities:
