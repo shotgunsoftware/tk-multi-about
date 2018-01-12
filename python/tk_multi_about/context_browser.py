@@ -38,11 +38,10 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
                                                          [ ["id", "is", ctx.project["id"]] ], 
                                                          ["name", "sg_description", "image"])
 
-            if self._app.sgtk.shotgun_url:
-                # we gather the shotgun url for just the site, rather than from the context as this could
-                # look odd if the url points to a task but is displayed under the project heading
-                # when the context contains more than just the project.
-                data["shotgun_url"] = "%s/detail/Project/%d" % (self._app.sgtk.shotgun_url, ctx.project["id"])
+            # we gather the shotgun url for just the site, rather than from the context as this could
+            # look odd if the url points to a task but is displayed under the project heading
+            # when the context contains more than just the project.
+            data["shotgun_url"] = self._app.sgtk.shotgun_url
             
         if ctx.entity:
             # get entity data
@@ -77,19 +76,14 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
 
         if result.get("project"):
             d = result["project"]
-            
+
             i = self.add_item(browser_widget.ListItem)
             details = []
-            details.append("<b>Project %s</b>" % d.get("name"))
 
-            # add the site url
-            link_color = self._app.engine.style_constants["SG_HIGHLIGHT_COLOR"]
-            full_site_url = result.get("shotgun_url") if result.get("shotgun_url") else ""
-            nice_name_site_url = self._get_url_nice_name(full_site_url)
-            site_display_template = "<a href=\"{url}\" style=\"color:{color}\" >{display_url}</a>"
-            site_str = site_display_template.format(url=full_site_url, display_url=nice_name_site_url, color=link_color)
-            details.append(site_str)
-
+            # get the site url and add it next to the project name
+            site_url_full = result.get("shotgun_url")
+            site_url_nice_name = self._get_url_nice_name(site_url_full)
+            details.append("<b>Project %s</b> (%s)" % (d.get("name"), site_url_nice_name))
             details.append( d.get("sg_description") if d.get("sg_description") else "No Description" )
 
             i.set_details("<br>".join(details))
