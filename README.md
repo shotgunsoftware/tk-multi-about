@@ -1,5 +1,5 @@
 ## Documentation
-This repository is a part of the Shotgun Pipeline Toolkit.
+This repository is a part of the Shotgun Pipeline Toolki t.
 
 - For more information about this app and for release notes, *see the wiki section*.
 - For general information and documentation, click here: https://support.shotgunsoftware.com/entries/95441257
