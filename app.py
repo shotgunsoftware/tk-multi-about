@@ -10,12 +10,7 @@
 
 """
 An app that shows information about the current work area.
-
 """
-
-import sys
-import os
-import platform
 
 from tank.platform import Application
 
@@ -26,10 +21,9 @@ class AboutTank(Application):
         Called as the application is being initialized
         """
         tk_multi_about = self.import_module("tk_multi_about")
-        cb = lambda: tk_multi_about.show_dialog(self)
         self.engine.register_command(
             "Work Area Info...",
-            cb,
+            lambda: tk_multi_about.show_dialog(self),
             {"type": "context_menu", "short_name": "work_area_info"},
         )
 

@@ -9,13 +9,6 @@
 # not expressly granted therein are reserved by Shotgun Software Inc.
 
 import sgtk
-import os
-import sys
-import datetime
-import threading
-
-
-from sgtk.platform.qt import QtCore, QtGui
 
 browser_widget = sgtk.platform.import_framework("tk-framework-widget", "browser_widget")
 

@@ -9,13 +9,6 @@
 # not expressly granted therein are reserved by Shotgun Software Inc.
 
 import tank
-import os
-import sys
-import datetime
-import threading
-
-
-from tank.platform.qt import QtCore, QtGui
 
 browser_widget = tank.platform.import_framework("tk-framework-widget", "browser_widget")
 

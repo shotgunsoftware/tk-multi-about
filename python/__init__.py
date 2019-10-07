@@ -9,3 +9,5 @@
 # not expressly granted therein are reserved by Shotgun Software Inc.
 
 from . import tk_multi_about
+
+__all__ = "tk_multi_about",

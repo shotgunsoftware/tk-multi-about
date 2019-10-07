@@ -8,11 +8,8 @@
 # agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
 # not expressly granted therein are reserved by Shotgun Software Inc.
 
-import tank
-import unicodedata
 import os
 import sys
-import threading
 
 from tank.platform.qt import QtCore, QtGui
 from tank.platform import restart
