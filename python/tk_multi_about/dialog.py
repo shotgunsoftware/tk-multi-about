@@ -52,11 +52,12 @@ class AppDialog(QtGui.QWidget):
         self.setup_apps_list()
         self.setup_environment_list()
 
-        # When there is no file system locations, hide the "Jump to the File System" button.
+        # When there is no file system locations, hide the
+        # "Jump to the File System" button.
         if not self._app.context.filesystem_locations:
             self.ui.jump_to_fs.setVisible(False)
 
-    ########################################################################################
+    #######################################################################
     # make sure we trap when the dialog is closed so that we can shut down
     # our threads. Nuke does not do proper cleanup on exit.
 
@@ -67,7 +68,7 @@ class AppDialog(QtGui.QWidget):
         # okay to close!
         event.accept()
 
-    ########################################################################################
+    #######################
     # basic business logic
 
     def setup_context_list(self):

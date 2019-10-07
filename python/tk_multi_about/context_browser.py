@@ -31,9 +31,9 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
                 ["name", "sg_description", "image"],
             )
 
-            # we gather the shotgun url for just the site, rather than from the context as this could
-            # look odd if the url points to a task but is displayed under the project heading
-            # when the context contains more than just the project.
+            # we gather the shotgun url for just the site, rather than from the context
+            # as this could look odd if the url points to a task but is displayed under
+            # the project heading when the context contains more than just the project.
             data["shotgun_url"] = self._app.sgtk.shotgun_url
 
         if ctx.entity:
