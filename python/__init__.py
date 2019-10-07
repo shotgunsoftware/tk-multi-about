@@ -10,4 +10,4 @@
 
 from . import tk_multi_about
 
-__all__ = "tk_multi_about",
+__all__ = ("tk_multi_about",)
