@@ -8,7 +8,6 @@
 
 from tank.platform.qt import QtCore, QtGui
 
-
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
@@ -23,14 +22,10 @@ class Ui_Dialog(object):
         self.verticalLayout_4 = QtGui.QVBoxLayout(self.tab)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.context_browser = ContextBrowserWidget(self.tab)
-        sizePolicy = QtGui.QSizePolicy(
-            QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding
-        )
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.context_browser.sizePolicy().hasHeightForWidth()
-        )
+        sizePolicy.setHeightForWidth(self.context_browser.sizePolicy().hasHeightForWidth())
         self.context_browser.setSizePolicy(sizePolicy)
         self.context_browser.setMinimumSize(QtCore.QSize(380, 0))
         self.context_browser.setObjectName("context_browser")
@@ -40,18 +35,14 @@ class Ui_Dialog(object):
         self.label_4.setObjectName("label_4")
         self.verticalLayout_4.addWidget(self.label_4)
         icon = QtGui.QIcon()
-        icon.addPixmap(
-            QtGui.QPixmap(":/res/icon_task.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off
-        )
+        icon.addPixmap(QtGui.QPixmap(":/res/icon_task.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.context_overview_tab_widget.addTab(self.tab, icon, "")
         self.tab_2 = QtGui.QWidget()
         self.tab_2.setObjectName("tab_2")
         self.verticalLayout_2 = QtGui.QVBoxLayout(self.tab_2)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.app_browser = AppBrowserWidget(self.tab_2)
-        sizePolicy = QtGui.QSizePolicy(
-            QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding
-        )
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.app_browser.sizePolicy().hasHeightForWidth())
@@ -64,25 +55,17 @@ class Ui_Dialog(object):
         self.label_2.setObjectName("label_2")
         self.verticalLayout_2.addWidget(self.label_2)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(
-            QtGui.QPixmap(":/res/logo_color_16.png"),
-            QtGui.QIcon.Normal,
-            QtGui.QIcon.Off,
-        )
+        icon1.addPixmap(QtGui.QPixmap(":/res/logo_color_16.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.context_overview_tab_widget.addTab(self.tab_2, icon1, "")
         self.tab_3 = QtGui.QWidget()
         self.tab_3.setObjectName("tab_3")
         self.verticalLayout_3 = QtGui.QVBoxLayout(self.tab_3)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.environment_browser = EnvironmentBrowserWidget(self.tab_3)
-        sizePolicy = QtGui.QSizePolicy(
-            QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding
-        )
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.environment_browser.sizePolicy().hasHeightForWidth()
-        )
+        sizePolicy.setHeightForWidth(self.environment_browser.sizePolicy().hasHeightForWidth())
         self.environment_browser.setSizePolicy(sizePolicy)
         self.environment_browser.setMinimumSize(QtCore.QSize(380, 0))
         self.environment_browser.setObjectName("environment_browser")
@@ -92,9 +75,7 @@ class Ui_Dialog(object):
         self.label_3.setObjectName("label_3")
         self.verticalLayout_3.addWidget(self.label_3)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(
-            QtGui.QPixmap(":/res/cog_white.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off
-        )
+        icon2.addPixmap(QtGui.QPixmap(":/res/cog_white.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.context_overview_tab_widget.addTab(self.tab_3, icon2, "")
         self.horizontalLayout.addWidget(self.context_overview_tab_widget)
         self.verticalLayout = QtGui.QVBoxLayout()
@@ -114,9 +95,7 @@ class Ui_Dialog(object):
         self.support = QtGui.QPushButton(Dialog)
         self.support.setObjectName("support")
         self.verticalLayout.addWidget(self.support)
-        spacerItem = QtGui.QSpacerItem(
-            20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding
-        )
+        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem)
         self.close = QtGui.QPushButton(Dialog)
         self.close.setObjectName("close")
@@ -128,83 +107,17 @@ class Ui_Dialog(object):
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(
-            QtGui.QApplication.translate(
-                "Dialog",
-                "The Current Sgtk Environment",
-                None,
-                QtGui.QApplication.UnicodeUTF8,
-            )
-        )
-        self.label_4.setText(
-            QtGui.QApplication.translate(
-                "Dialog",
-                "The above breakdown shows all the different Shotgun objects that together make up the Current Work Area. Clicking any of the items in the list will take you to that object inside of Shotgun.",
-                None,
-                QtGui.QApplication.UnicodeUTF8,
-            )
-        )
-        self.context_overview_tab_widget.setTabText(
-            self.context_overview_tab_widget.indexOf(self.tab),
-            QtGui.QApplication.translate(
-                "Dialog", "Current Context", None, QtGui.QApplication.UnicodeUTF8
-            ),
-        )
-        self.label_2.setText(
-            QtGui.QApplication.translate(
-                "Dialog",
-                "The list above shows all the different apps that are currently active. You can double click on an app to jump to its documentation.",
-                None,
-                QtGui.QApplication.UnicodeUTF8,
-            )
-        )
-        self.context_overview_tab_widget.setTabText(
-            self.context_overview_tab_widget.indexOf(self.tab_2),
-            QtGui.QApplication.translate(
-                "Dialog", "Active Apps", None, QtGui.QApplication.UnicodeUTF8
-            ),
-        )
-        self.label_3.setText(
-            QtGui.QApplication.translate(
-                "Dialog",
-                "The environment file contains all the settings and configuration for the currently running Shotgun Apps. The Engine provides core services such as menu management and app startup.",
-                None,
-                QtGui.QApplication.UnicodeUTF8,
-            )
-        )
-        self.context_overview_tab_widget.setTabText(
-            self.context_overview_tab_widget.indexOf(self.tab_3),
-            QtGui.QApplication.translate(
-                "Dialog", "Environment", None, QtGui.QApplication.UnicodeUTF8
-            ),
-        )
-        self.jump_to_fs.setText(
-            QtGui.QApplication.translate(
-                "Dialog",
-                "Jump to the File System",
-                None,
-                QtGui.QApplication.UnicodeUTF8,
-            )
-        )
-        self.reload_apps.setText(
-            QtGui.QApplication.translate(
-                "Dialog", "Reload Engine and Apps", None, QtGui.QApplication.UnicodeUTF8
-            )
-        )
-        self.support.setText(
-            QtGui.QApplication.translate(
-                "Dialog",
-                "Documentation and Support",
-                None,
-                QtGui.QApplication.UnicodeUTF8,
-            )
-        )
-        self.close.setText(
-            QtGui.QApplication.translate(
-                "Dialog", "Close", None, QtGui.QApplication.UnicodeUTF8
-            )
-        )
-
+        Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "The Current Sgtk Environment", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_4.setText(QtGui.QApplication.translate("Dialog", "The above breakdown shows all the different Shotgun objects that together make up the Current Work Area. Clicking any of the items in the list will take you to that object inside of Shotgun.", None, QtGui.QApplication.UnicodeUTF8))
+        self.context_overview_tab_widget.setTabText(self.context_overview_tab_widget.indexOf(self.tab), QtGui.QApplication.translate("Dialog", "Current Context", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(QtGui.QApplication.translate("Dialog", "The list above shows all the different apps that are currently active. You can double click on an app to jump to its documentation.", None, QtGui.QApplication.UnicodeUTF8))
+        self.context_overview_tab_widget.setTabText(self.context_overview_tab_widget.indexOf(self.tab_2), QtGui.QApplication.translate("Dialog", "Active Apps", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_3.setText(QtGui.QApplication.translate("Dialog", "The environment file contains all the settings and configuration for the currently running Shotgun Apps. The Engine provides core services such as menu management and app startup.", None, QtGui.QApplication.UnicodeUTF8))
+        self.context_overview_tab_widget.setTabText(self.context_overview_tab_widget.indexOf(self.tab_3), QtGui.QApplication.translate("Dialog", "Environment", None, QtGui.QApplication.UnicodeUTF8))
+        self.jump_to_fs.setText(QtGui.QApplication.translate("Dialog", "Jump to the File System", None, QtGui.QApplication.UnicodeUTF8))
+        self.reload_apps.setText(QtGui.QApplication.translate("Dialog", "Reload Engine and Apps", None, QtGui.QApplication.UnicodeUTF8))
+        self.support.setText(QtGui.QApplication.translate("Dialog", "Documentation and Support", None, QtGui.QApplication.UnicodeUTF8))
+        self.close.setText(QtGui.QApplication.translate("Dialog", "Close", None, QtGui.QApplication.UnicodeUTF8))
 
 from ..context_browser import ContextBrowserWidget
 from ..environment_browser import EnvironmentBrowserWidget
