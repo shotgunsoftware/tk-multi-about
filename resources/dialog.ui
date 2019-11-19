@@ -45,6 +45,9 @@
            <height>0</height>
           </size>
          </property>
+         <property name="accessibleName">
+          <string>context_browser</string>
+         </property>
         </widget>
        </item>
        <item>

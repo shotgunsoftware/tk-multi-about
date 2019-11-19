@@ -108,6 +108,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "The Current Sgtk Environment", None, QtGui.QApplication.UnicodeUTF8))
+        self.context_browser.setAccessibleName(QtGui.QApplication.translate("Dialog", "context_browser", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("Dialog", "The above breakdown shows all the different Shotgun objects that together make up the Current Work Area. Clicking any of the items in the list will take you to that object inside of Shotgun.", None, QtGui.QApplication.UnicodeUTF8))
         self.context_overview_tab_widget.setTabText(self.context_overview_tab_widget.indexOf(self.tab), QtGui.QApplication.translate("Dialog", "Current Context", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("Dialog", "The list above shows all the different apps that are currently active. You can double click on an app to jump to its documentation.", None, QtGui.QApplication.UnicodeUTF8))
