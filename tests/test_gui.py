@@ -1,10 +1,12 @@
 import pytest
 import subprocess
 import time
+import os
 import sgtk
+from tk_toolchain.cmd_line_tools import tk_run_app
 
 try:
-    from MA.UI import topwindows, mouseClick
+    from MA.UI import topwindows
 except ImportError:
     pytestmark = pytest.mark.skip()
 
@@ -14,17 +16,34 @@ except ImportError:
 @pytest.fixture(scope="session")
 def host_application():
     """
-    Launches the host application for the Toolkit application.
+    Launch the host application for the Toolkit application.
     """
-    process = subprocess.Popen(["tk-run-app", "-e", "Task", "-i", "448"])
+    launcher = ["python", "-m"]
+    if "SHOTGUN_TEST_COVERAGE" in os.environ:
+        launcher += ["coverage", "run", "--parallel-mode", "-m"]
+
+    process = subprocess.Popen(
+        launcher
+        + [
+            "tk_toolchain.cmd_line_tools.tk_run_app",
+            # A task in Big Buck Bunny
+            "-e",
+            "Task",
+            "-i",
+            "448",
+        ]
+    )
     try:
         yield
     finally:
         process.kill()
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def about_box(host_application):
+    """
+    Retrieve the about box and return the AboutBoxAppWrapper.
+    """
     before = time.time()
     while before + 30 > time.time():
         if sgtk.util.is_windows():
@@ -33,8 +52,11 @@ def about_box(host_application):
             about_box = AboutBoxAppWrapper(topwindows["python"])
 
         if about_box.exists() == True:
-            return about_box
-    raise RuntimeError("Timeout waiting for the about box to launch.")
+            yield about_box
+            about_box.close()
+            break
+    else:
+        raise RuntimeError("Timeout waiting for the about box to launch.")
 
 
 class BrowserWidget(object):
@@ -47,13 +69,19 @@ class BrowserWidget(object):
     # Besides, the breakdown app has some really custom behaviour, so let's not
     # commit to an interace too quickly.
 
-    def __init__(self, title, parent):
+    def __init__(self, parent, title, has_search_bar=False):
         """
         :param parent: Parent widget or QuerySet that can reach the specified title
         :param str title: Title of the browser widget. This is the
             label above the browser view.
         """
-        self._title_widget = parent[title].get()
+        self._title_widget = parent[title]
+        self._has_search_bar = has_search_bar
+
+    @property
+    def search(self):
+        assert self._has_search_bar
+        return self._title_widget.parent.children[1]
 
     @property
     def items(self):
@@ -65,7 +93,8 @@ class BrowserWidget(object):
             view = self._title_widget.parent.parent.children[1][0][0][0][0]
             return [c[0][1].name for c in view.children]
         else:
-            view = self._title_widget.parent.children[1]
+            # The search box comes before the list view in the children list.
+            view = self._title_widget.parent.children[2 if self._has_search_bar else 1]
             assert view.exists()
             # Every other item is some text element.
             return [c.value for i, c in enumerate(view.children) if i % 2 == 1]
@@ -111,6 +140,9 @@ class AboutBoxAppWrapper(object):
         """
         return self._root.exists()
 
+    def close(self):
+        self._root.buttons["Close"].get().mouseClick()
+
     def select_context_tab(self):
         """
         Selects the Current Context tab
@@ -134,24 +166,27 @@ class AboutBoxAppWrapper(object):
         """
         Access the BrowserWidget from the Current Context tab.
         """
-        return BrowserWidget("Your Current Work Context", self._root)
+        return BrowserWidget(self._root, "Your Current Work Context")
 
     @property
     def active_apps_browser(self):
         """
         Access the BrowserWidget from the Active Apps tab.
         """
-        return BrowserWidget("Currently Running Apps", self._root)
+        return BrowserWidget(self._root, "Currently Running Apps", has_search_bar=True)
 
     @property
     def environment_browser(self):
         """
         Access the BrowserWidget from the Environment tab.
         """
-        return BrowserWidget("The Current Environment", self._root)
+        return BrowserWidget(self._root, "The Current Environment")
 
 
 def test_context_tab(about_box):
+    """
+    Ensure the content of the context browser is complete.
+    """
     about_box.select_context_tab()
     assert about_box.context_browser.items == [
         "Project Big Buck Bunny (jf-dev.shotgunstudio.com)\nBig Buck Bunny is a short computer animated film by the Blender Institute, part of the Blender Foundation.",
@@ -162,13 +197,45 @@ def test_context_tab(about_box):
 
 
 def test_active_apps_tab(about_box):
+    """
+    Ensure the content of the active apps browser is complete.
+    """
     about_box.select_active_apps_tab()
+    assert about_box.active_apps_browser.items == [
+        "About Shotgun Pipeline Toolkit\nVersion: Undefined\nDescription: Shows a breakdown of your current environment and configuration."
+    ]
+
+
+def test_search_box_that_empties_list(about_box):
+    """
+    Ensure searching for missing keyword returns nothing.
+    """
+    about_box.select_active_apps_tab()
+    about_box.active_apps_browser.search.pasteIn("Workfiles")
+    assert about_box.active_apps_browser.items == []
+
+
+def test_search_box_that_keeps_item(about_box):
+    """
+    Ensure searching for valid keyword returns something, but
+    if you add invalid text then it stops matching.
+    """
+    about_box.select_active_apps_tab()
+    about_box.active_apps_browser.search.pasteIn("about")
+    assert about_box.active_apps_browser.items == [
+        "About Shotgun Pipeline Toolkit\nVersion: Undefined\nDescription: Shows a breakdown of your current environment and configuration."
+    ]
+    about_box.active_apps_browser.search.typeIn("zxcxc")
     assert about_box.active_apps_browser.items == []
 
 
 def test_environment_tab(about_box):
+    """
+    Ensure the environment box is fully populated.
+    """
     about_box.select_environment_tab()
     assert about_box.environment_browser.items == [
         "Engine: tk_testengine\nVersion: Undefined\nDescription: No description available.",
-        "Environment: test\nPath: /Users/boismej/gitlocal/tk-toolchain/tk_toolchain/cmd_line_tools/tk_run_app/config/env/test.yml\nDescription: No description found.",
+        "Environment: test\nPath: %s\nDescription: No description found."
+        % os.path.join(tk_run_app.get_config_location(), "env", "test.yml"),
     ]
