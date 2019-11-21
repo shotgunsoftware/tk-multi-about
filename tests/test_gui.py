@@ -62,17 +62,13 @@ class BrowserWidget(object):
         ``\n`` will delineate lines in an item.
         """
         if sgtk.util.is_windows():
-            return [
-                c[0][1].name
-                for c in self._title_widget.parent.parent.children[1][0][0][0][
-                    0
-                ].children
-            ]
+            view = self._title_widget.parent.parent.children[1][0][0][0][0]
+            return [c[0][1].name for c in view.children]
         else:
-            context_view = self._title_widget.parent.children[1]
-            assert context_view.exists()
+            view = self._title_widget.parent.children[1]
+            assert view.exists()
             # Every other item is some text element.
-            return [c.value for i, c in enumerate(context_view.children) if i % 2 == 1]
+            return [c.value for i, c in enumerate(view.children) if i % 2 == 1]
 
 
 class TabWidget(object):
