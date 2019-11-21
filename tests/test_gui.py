@@ -110,27 +110,48 @@ class AboutBoxAppWrapper(object):
         self._root = parent["Shotgun: Your Current Work Area"].get()
 
     def exists(self):
+        """
+        ``True`` if the widget was found, ``False`` otherwise.
+        """
         return self._root.exists()
 
     def select_context_tab(self):
+        """
+        Selects the Current Context tab
+        """
         TabWidget(self._root).switchTab("Current Context")
 
     def select_active_apps_tab(self):
+        """
+        Selects the Active Apps tab
+        """
         TabWidget(self._root).switchTab("Active Apps")
 
     def select_environment_tab(self):
+        """
+        Selects the Environment tab
+        """
         TabWidget(self._root).switchTab("Environment")
 
     @property
     def context_browser(self):
+        """
+        Access the BrowserWidget from the Current Context tab.
+        """
         return BrowserWidget("Your Current Work Context", self._root)
 
     @property
     def active_apps_browser(self):
+        """
+        Access the BrowserWidget from the Active Apps tab.
+        """
         return BrowserWidget("Currently Running Apps", self._root)
 
     @property
-    def current_environment_browser(self):
+    def environment_browser(self):
+        """
+        Access the BrowserWidget from the Environment tab.
+        """
         return BrowserWidget("The Current Environment", self._root)
 
 
@@ -151,7 +172,7 @@ def test_active_apps_tab(about_box):
 
 def test_environment_tab(about_box):
     about_box.select_environment_tab()
-    assert about_box.current_environment_browser.items == [
+    assert about_box.environment_browser.items == [
         "Engine: tk_testengine\nVersion: Undefined\nDescription: No description available.",
         "Environment: test\nPath: /Users/boismej/gitlocal/tk-toolchain/tk_toolchain/cmd_line_tools/tk_run_app/config/env/test.yml\nDescription: No description found.",
     ]
