@@ -1,7 +1,18 @@
+# Copyright (c) 2019 Shotgun Software Inc.
+#
+# CONFIDENTIAL AND PROPRIETARY
+#
+# This work is provided "AS IS" and subject to the Shotgun Pipeline Toolkit
+# Source Code License included in this distribution package. See LICENSE.
+# By accessing, using, copying or modifying this work you indicate your
+# agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
+# not expressly granted therein are reserved by Shotgun Software Inc.
+
 import pytest
 import subprocess
 import time
 import os
+import sys
 import sgtk
 from tk_toolchain.cmd_line_tools import tk_run_app
 
@@ -11,14 +22,23 @@ except ImportError:
     pytestmark = pytest.mark.skip()
 
 
-# tk-run-app should run during the entire test run and not start and
-# stop on each test.
+# This fixture will launch tk-run-app on first usage
+# and will remain valid until the test run ends.
 @pytest.fixture(scope="session")
 def host_application():
     """
     Launch the host application for the Toolkit application.
+
+    TODO: This can probably be refactored, as it is not
+    likely to change between apps, except for the context.
+    One way to pass in a context would be to have the repo being
+    tested to define a fixture named context and this fixture
+    would consume it.
     """
     launcher = ["python", "-m"]
+
+    # If we're interested into getting coverage for the
+    # app, we're going to invoke the coverage module first.
     if "SHOTGUN_TEST_COVERAGE" in os.environ:
         launcher += ["coverage", "run", "--parallel-mode", "-m"]
 
@@ -26,17 +46,34 @@ def host_application():
         launcher
         + [
             "tk_toolchain.cmd_line_tools.tk_run_app",
-            # A task in Big Buck Bunny
-            "-e",
+            # Allows the test for this application to be invoked from
+            # another repository, namely the tk-framework-widget repo,
+            # by specifying that the repo detection should start
+            # at the specified location.
+            "--location",
+            os.path.dirname(__file__),
+            # A task in Big Buck Bunny which we're going to use
+            # for the current context.
+            "--context-entity-type",
             "Task",
-            "-i",
+            "--context-entity-id",
             "448",
         ]
     )
     try:
         yield
     finally:
-        process.kill()
+        # We're done. Grab all the output from the process
+        # and print it so that is there was an error
+        # we'll know about it.
+        stdout, stderr = process.communicate()
+        sys.stdout.write(stdout or "")
+        sys.stderr.write(stderr or "")
+        process.poll()
+        if process.returncode is None:
+            process.kill()
+        else:
+            assert process.returncode == 0
 
 
 @pytest.fixture(scope="session")
@@ -67,7 +104,7 @@ class BrowserWidget(object):
     # TODO: This should be refactored at some point inside the tk-framework-widget
     # framework, but since this is our first use of the wrapper, let's not over do this.
     # Besides, the breakdown app has some really custom behaviour, so let's not
-    # commit to an interace too quickly.
+    # commit to an interface too quickly.
 
     def __init__(self, parent, title, has_search_bar=False):
         """
@@ -80,6 +117,9 @@ class BrowserWidget(object):
 
     @property
     def search(self):
+        """
+        The MA.UI control for the search box.
+        """
         assert self._has_search_bar
         return self._title_widget.parent.children[1]
 
@@ -111,7 +151,7 @@ class TabWidget(object):
         """
         self._parent = parent
 
-    def switchTab(self, name):
+    def switch_tab(self, name):
         """
         Switch to the given tab name.
 
@@ -147,19 +187,19 @@ class AboutBoxAppWrapper(object):
         """
         Selects the Current Context tab
         """
-        TabWidget(self._root).switchTab("Current Context")
+        TabWidget(self._root).switch_tab("Current Context")
 
     def select_active_apps_tab(self):
         """
         Selects the Active Apps tab
         """
-        TabWidget(self._root).switchTab("Active Apps")
+        TabWidget(self._root).switch_tab("Active Apps")
 
     def select_environment_tab(self):
         """
         Selects the Environment tab
         """
-        TabWidget(self._root).switchTab("Environment")
+        TabWidget(self._root).switch_tab("Environment")
 
     @property
     def context_browser(self):
