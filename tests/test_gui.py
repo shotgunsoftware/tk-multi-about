@@ -22,10 +22,17 @@ except ImportError:
     pytestmark = pytest.mark.skip()
 
 
+@pytest.fixture(scope="session")
+def context():
+    # A task in Big Buck Bunny which we're going to use
+    # for the current context.
+    return {"type": "Task", "id": 448}
+
+
 # This fixture will launch tk-run-app on first usage
 # and will remain valid until the test run ends.
 @pytest.fixture(scope="session")
-def host_application():
+def host_application(context):
     """
     Launch the host application for the Toolkit application.
 
@@ -35,16 +42,10 @@ def host_application():
     tested to define a fixture named context and this fixture
     would consume it.
     """
-    launcher = ["python", "-m"]
-
-    # If we're interested into getting coverage for the
-    # app, we're going to invoke the coverage module first.
-    if "SHOTGUN_TEST_COVERAGE" in os.environ:
-        launcher += ["coverage", "run", "--parallel-mode", "-m"]
-
     process = subprocess.Popen(
-        launcher
-        + [
+        [
+            "python",
+            "-m",
             "tk_toolchain.cmd_line_tools.tk_run_app",
             # Allows the test for this application to be invoked from
             # another repository, namely the tk-framework-widget repo,
@@ -52,12 +53,10 @@ def host_application():
             # at the specified location.
             "--location",
             os.path.dirname(__file__),
-            # A task in Big Buck Bunny which we're going to use
-            # for the current context.
             "--context-entity-type",
-            "Task",
+            context["type"],
             "--context-entity-id",
-            "10000000",
+            str(context["id"]),
         ]
     )
     try:
@@ -70,6 +69,8 @@ def host_application():
         sys.stdout.write(stdout or "")
         sys.stderr.write(stderr or "")
         process.poll()
+        # If returncode is not set, then the process
+        # was hung and we need to kill it
         if process.returncode is None:
             process.kill()
         else:
@@ -91,7 +92,7 @@ def about_box(host_application):
         if about_box.exists() == True:
             yield about_box
             about_box.close()
-            break
+            return
     else:
         raise RuntimeError("Timeout waiting for the about box to launch.")
 
