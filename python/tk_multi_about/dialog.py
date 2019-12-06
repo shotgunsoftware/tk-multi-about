@@ -103,22 +103,7 @@ class AppDialog(QtGui.QWidget):
         # launch one window for each location on disk
         paths = self._app.context.filesystem_locations
         for disk_location in paths:
-
-            # get the setting
-            system = sys.platform
-
-            # run the app
-            if system == "linux2":
-                cmd = 'xdg-open "%s"' % disk_location
-            elif system == "darwin":
-                cmd = 'open "%s"' % disk_location
-            elif system == "win32":
-                cmd = 'cmd.exe /C start "Folder" "%s"' % disk_location
-            else:
-                raise Exception("Platform '%s' is not supported." % system)
-
-            exit_code = os.system(cmd)
-            if exit_code != 0:
+            if not QtGui.QDesktopServices.openUrl(disk_location):
                 self._app.log_error("Failed to launch '%s'!" % cmd)
 
     def show_in_sg(self):
