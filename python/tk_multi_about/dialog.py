@@ -103,7 +103,7 @@ class AppDialog(QtGui.QWidget):
         # launch one window for each location on disk
         paths = self._app.context.filesystem_locations
         for disk_location in paths:
-            if not QtGui.QDesktopServices.openUrl(disk_location):
+            if not QtGui.QDesktopServices.openUrl("file://{0}".format(disk_location)):
                 self._app.log_error("Failed to open '%s'!" % disk_location)
 
     def show_in_sg(self):
