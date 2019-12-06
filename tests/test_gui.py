@@ -14,12 +14,16 @@ import time
 import os
 import sys
 import sgtk
+from tank_vendor.shotgun_api3.lib.six.moves import urllib
 from tk_toolchain.cmd_line_tools import tk_run_app
 
 try:
     from MA.UI import topwindows
 except ImportError:
     pytestmark = pytest.mark.skip()
+
+
+from sgtk.authentication import ShotgunAuthenticator
 
 
 @pytest.fixture(scope="session")
@@ -229,8 +233,12 @@ def test_context_tab(about_box):
     Ensure the content of the context browser is complete.
     """
     about_box.select_context_tab()
+    user = ShotgunAuthenticator().get_default_user()
+    server = urllib.parse.urlparse(user.host).netloc
     assert about_box.context_browser.items == [
-        "Project Big Buck Bunny (jf-dev.shotgunstudio.com)\nBig Buck Bunny is a short computer animated film by the Blender Institute, part of the Blender Foundation.",
+        "Project Big Buck Bunny ({0})\nBig Buck Bunny is a short computer animated film by the Blender Institute, part of the Blender Foundation.".format(
+            server
+        ),
         "Asset Acorn\nAs to size, Alice hastily but Im not looking for eggs, as it spoke. As wet as ever, said Alice to herself, and fanned herself one",
         "Pipeline Step Art\nNo Description",
         "Task Art\nStatus: fin\nAssigned to: Artist 3",
