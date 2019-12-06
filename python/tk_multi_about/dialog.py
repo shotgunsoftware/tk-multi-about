@@ -104,7 +104,7 @@ class AppDialog(QtGui.QWidget):
         paths = self._app.context.filesystem_locations
         for disk_location in paths:
             if not QtGui.QDesktopServices.openUrl(disk_location):
-                self._app.log_error("Failed to launch '%s'!" % cmd)
+                self._app.log_error("Failed to open '%s'!" % disk_location)
 
     def show_in_sg(self):
         """
