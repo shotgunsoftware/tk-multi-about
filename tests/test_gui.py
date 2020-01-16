@@ -14,7 +14,7 @@ import time
 import os
 import sys
 import sgtk
-from tank_vendor.shotgun_api3.lib.six.moves import urllib
+from tank_vendor.six.moves import urllib
 from tk_toolchain.cmd_line_tools import tk_run_app
 
 try:
