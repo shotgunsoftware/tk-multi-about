@@ -24,6 +24,7 @@ except ImportError:
 
 
 from sgtk.authentication import ShotgunAuthenticator
+from tk_toolchain import authentication
 
 
 @pytest.fixture(scope="session")
@@ -233,7 +234,7 @@ def test_context_tab(about_box):
     Ensure the content of the context browser is complete.
     """
     about_box.select_context_tab()
-    user = ShotgunAuthenticator().get_default_user()
+    user = authentication.get_toolkit_user()
     server = urllib.parse.urlparse(user.host).netloc
     assert about_box.context_browser.items == [
         "Project Big Buck Bunny ({0})\nBig Buck Bunny is a short computer animated film by the Blender Institute, part of the Blender Foundation.".format(
