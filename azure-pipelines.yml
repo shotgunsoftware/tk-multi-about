@@ -43,3 +43,8 @@ jobs:
     has_ui_tests: true
     has_unit_tests: false
     tk_toolchain_ref: ui_automation_on_azure
+    additional_repositories:
+      # These are required by tk-toolchain's tk-run-app
+      - name: tk-framework-qtwidgets
+      - name: tk-framework-widget
+      - name: tk-framework-shotgunutils
