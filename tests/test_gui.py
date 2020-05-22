@@ -24,13 +24,14 @@ except ImportError:
 
 
 from sgtk.authentication import ShotgunAuthenticator
+from tk_toolchain import authentication
 
 
 @pytest.fixture(scope="session")
 def context():
     # A task in Big Buck Bunny which we're going to use
     # for the current context.
-    return {"type": "Task", "id": 448}
+    return {"type": "Task", "id": 3588}
 
 
 # This fixture will launch tk-run-app on first usage
@@ -233,12 +234,11 @@ def test_context_tab(about_box):
     Ensure the content of the context browser is complete.
     """
     about_box.select_context_tab()
-    user = ShotgunAuthenticator().get_default_user()
+    user = authentication.get_toolkit_user()
     server = urllib.parse.urlparse(user.host).netloc
-    assert about_box.context_browser.items == [
-        "Project Big Buck Bunny ({0})\nBig Buck Bunny is a short computer animated film by the Blender Institute, part of the Blender Foundation.".format(
-            server
-        ),
+    # The first line contains the server name, which we do not want to display during
+    # automation on the cloud.
+    assert about_box.context_browser.items[1:] == [
         "Asset Acorn\nAs to size, Alice hastily but Im not looking for eggs, as it spoke. As wet as ever, said Alice to herself, and fanned herself one",
         "Pipeline Step Art\nNo Description",
         "Task Art\nStatus: fin\nAssigned to: Artist 3",
