@@ -35,7 +35,7 @@ class EnvironmentBrowserWidget(browser_widget.BrowserWidget):
             "version": engine.version,
             "documentation_url": engine.documentation_url,
             "description": engine.description,
-            "thumbnail": engine.icon_256 if engine.icon_256 else ":/res/tank_app_logo.png",
+            "thumbnail": engine.icon_256,
         }
 
         data["environment"] = {

@@ -33,7 +33,7 @@ class AppBrowserWidget(browser_widget.BrowserWidget):
                 "version": app.version,
                 "documentation_url": app.documentation_url,
                 "description": app.description,
-                "thumbnail": app.icon_256 if app.icon_256 else ":/res/tank_app_logo.png",
+                "thumbnail": app.icon_256,
             }
         return data
 
