@@ -33,7 +33,8 @@ class EnvironmentBrowserWidget(browser_widget.BrowserWidget):
         data["engine"] = {"name": engine.display_name,
                           "version": engine.version,
                           "documentation_url": engine.documentation_url,
-                          "description": engine.description
+                          "description": engine.description,
+                          "thumbnail": engine.icon_256 if engine.icon_256 else ":/res/tank_app_logo.png"
                           }
         
         data["environment"] = {"name": engine.environment.get("name"),
@@ -56,7 +57,7 @@ class EnvironmentBrowserWidget(browser_widget.BrowserWidget):
         i.set_details("<br>".join(details))
         i.data = d
         i.setToolTip("Double click for documentation.")
-        i.set_thumbnail(":/res/tank_app_logo.png")
+        i.set_thumbnail(d.get("thumbnail"))
 
         
         d = result["environment"]
