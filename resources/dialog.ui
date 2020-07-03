@@ -45,6 +45,12 @@
            <height>0</height>
           </size>
          </property>
+         <property name="accessibleName">
+          <string>context_browser</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>context_browser</string>
+         </property>
         </widget>
        </item>
        <item>
@@ -82,6 +88,12 @@
            <height>0</height>
           </size>
          </property>
+         <property name="accessibleName">
+          <string>app_browser</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>app_browser</string>
+         </property>
         </widget>
        </item>
        <item>
@@ -118,6 +130,12 @@
            <width>380</width>
            <height>0</height>
           </size>
+         </property>
+         <property name="accessibleName">
+          <string>environment_browser</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>environment_browser</string>
          </property>
         </widget>
        </item>
