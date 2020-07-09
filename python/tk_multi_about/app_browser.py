@@ -33,6 +33,7 @@ class AppBrowserWidget(browser_widget.BrowserWidget):
                 "version": app.version,
                 "documentation_url": app.documentation_url,
                 "description": app.description,
+                "thumbnail": app.icon_256,
             }
         return data
 
@@ -48,4 +49,4 @@ class AppBrowserWidget(browser_widget.BrowserWidget):
             i.set_details("<br>".join(details))
             i.data = app
             i.setToolTip("Double click for documentation.")
-            i.set_thumbnail(":/res/tank_app_logo.png")
+            i.set_thumbnail(app.get("thumbnail"))
