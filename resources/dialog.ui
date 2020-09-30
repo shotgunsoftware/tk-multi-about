@@ -56,7 +56,7 @@
        <item>
         <widget class="QLabel" name="label_4">
          <property name="text">
-          <string>The above breakdown shows all the different Shotgun objects that together make up the Current Work Area. Clicking any of the items in the list will take you to that object inside of Shotgun.</string>
+          <string>Current Context lists all Shotgun objects that together make up the Current Work Area. Double-click an item to access the object in Shotgun.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -99,7 +99,7 @@
        <item>
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>The list above shows all the different apps that are currently active. You can double click on an app to jump to its documentation.</string>
+          <string>Active Apps lists all currently active apps. Double-click an app to jump to its documentation.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -142,7 +142,7 @@
        <item>
         <widget class="QLabel" name="label_3">
          <property name="text">
-          <string>The environment file contains all the settings and configuration for the currently running Shotgun Apps. The Engine provides core services such as menu management and app startup.</string>
+          <string>The Environment file contains all settings and configurations for currently running Shotgun apps. The Engine provides core services, such as menu management and app startup.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
