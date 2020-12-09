@@ -104,7 +104,7 @@ class AppDialog(QtGui.QWidget):
         paths = self._app.context.filesystem_locations
         for disk_location in paths:
             if not QtGui.QDesktopServices.openUrl(
-                "file://{0}".format(disk_location).replace("\\", "/")
+                "file:///{0}".format(disk_location).replace("\\", "/")
             ):
                 self._app.log_error("Failed to open '%s'!" % disk_location)
 
