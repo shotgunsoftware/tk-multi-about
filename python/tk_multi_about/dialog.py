@@ -111,7 +111,9 @@ class AppDialog(QtGui.QWidget):
                 if not QtGui.QDesktopServices.openUrl(
                     "file:///{0}".format(disk_location).replace("\\", "/")
                 ):
-                    self._app.log_error("Failed to open system file browser for '%s'!" % disk_location)
+                    self._app.log_error(
+                        "Failed to open system file browser for '%s'!" % disk_location
+                    )
                     break
             self._app.log_info("Opened system file browser for '%s'" % disk_location)
 
