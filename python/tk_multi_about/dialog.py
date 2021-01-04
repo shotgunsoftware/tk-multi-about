@@ -109,7 +109,7 @@ class AppDialog(QtGui.QWidget):
                 # You will have a False return here on Windows when using
                 # drive letters and not UNC paths - add third slash
                 if not QtGui.QDesktopServices.openUrl(
-                        "file:///{0}".format(disk_location).replace("\\", "/")
+                    "file:///{0}".format(disk_location).replace("\\", "/")
                 ):
                     self._app.log_error("Failed to open system file browser for '%s'!" % disk_location)
                     break
