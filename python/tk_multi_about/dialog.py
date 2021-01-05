@@ -114,8 +114,10 @@ class AppDialog(QtGui.QWidget):
                     self._app.log_error(
                         "Failed to open system file browser for '%s'!" % disk_location
                     )
-                    break
-            self._app.log_info("Opened system file browser for '%s'" % disk_location)
+                else:
+                    self._app.log_debug(
+                        "Opened system file browser for '%s'" % disk_location
+                    )
 
     def show_in_sg(self):
         """
