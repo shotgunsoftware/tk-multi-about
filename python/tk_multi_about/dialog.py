@@ -8,15 +8,11 @@
 # agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
 # not expressly granted therein are reserved by Shotgun Software Inc.
 
-import tank
-import unicodedata
-import os
-import sys
-import threading
-
-from tank.platform.qt import QtCore, QtGui
-from tank.platform import restart
+from sgtk.platform.qt import QtCore, QtGui
+from sgtk.platform import restart, get_logger
 from .ui.dialog import Ui_Dialog
+
+logger = get_logger(__name__)
 
 
 class AppDialog(QtGui.QWidget):
@@ -111,13 +107,11 @@ class AppDialog(QtGui.QWidget):
                 if not QtGui.QDesktopServices.openUrl(
                     "file:///{0}".format(disk_location).replace("\\", "/")
                 ):
-                    self._app.log_error(
+                    logger.error(
                         "Failed to open system file browser for '%s'!" % disk_location
                     )
                 else:
-                    self._app.log_debug(
-                        "Opened system file browser for '%s'" % disk_location
-                    )
+                    logger.debug("Opened system file browser for '%s'" % disk_location)
 
     def show_in_sg(self):
         """
