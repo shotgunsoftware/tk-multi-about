@@ -251,7 +251,7 @@ def test_active_apps_tab(about_box):
     """
     about_box.select_active_apps_tab()
     assert about_box.active_apps_browser.items == [
-        "About SG Pipeline Toolkit\nVersion: Undefined\nDescription: Shows a breakdown of your current environment and configuration."
+        "About Shotgun Pipeline Toolkit\nVersion: Undefined\nDescription: Shows a breakdown of your current environment and configuration."
     ]
 
 
@@ -272,7 +272,7 @@ def test_search_box_that_keeps_item(about_box):
     about_box.select_active_apps_tab()
     about_box.active_apps_browser.search.pasteIn("about")
     assert about_box.active_apps_browser.items == [
-        "About SG Pipeline Toolkit\nVersion: Undefined\nDescription: Shows a breakdown of your current environment and configuration."
+        "About Shotgun Pipeline Toolkit\nVersion: Undefined\nDescription: Shows a breakdown of your current environment and configuration."
     ]
     about_box.active_apps_browser.search.typeIn("zxcxc")
     assert about_box.active_apps_browser.items == []
