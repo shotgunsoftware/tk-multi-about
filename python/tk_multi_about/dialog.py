@@ -11,6 +11,7 @@
 from sgtk.platform.qt import QtCore, QtGui
 from sgtk.platform import restart, get_logger
 from .ui.dialog import Ui_Dialog
+import sgtk
 
 logger = get_logger(__name__)
 
@@ -83,7 +84,7 @@ class AppDialog(QtGui.QWidget):
 
     def open_helpdesk(self):
         QtGui.QDesktopServices.openUrl(
-            QtCore.QUrl("http://support.shotgunsoftware.com")
+            QtCore.QUrl(sgtk.support_url)
         )
 
     def reload(self):

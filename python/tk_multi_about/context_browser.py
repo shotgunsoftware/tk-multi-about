@@ -95,7 +95,7 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
 
             i.set_details("<br>".join(details))
             i.sg_data = d
-            i.setToolTip("Double click to see more details in Shotgun.")
+            i.setToolTip("Double click to see more details in ShotGrid.")
 
             if d.get("image"):
                 i.set_thumbnail(d.get("image"))
@@ -114,7 +114,7 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             )
             i.set_details("<br>".join(details))
             i.sg_data = d
-            i.setToolTip("Double click to see more details in Shotgun.")
+            i.setToolTip("Double click to see more details in ShotGrid.")
 
             if d.get("image"):
                 i.set_thumbnail(d.get("image"))
@@ -132,7 +132,7 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             )
             i.set_details("<br>".join(details))
             i.sg_data = d
-            i.setToolTip("Double click to see more details in Shotgun.")
+            i.setToolTip("Double click to see more details in ShotGrid.")
 
             if d.get("image"):
                 i.set_thumbnail(d.get("image"))
@@ -148,7 +148,7 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             )
             i.set_details("<br>".join(details))
             i.sg_data = d
-            i.setToolTip("Double click to see more details in Shotgun.")
+            i.setToolTip("Double click to see more details in ShotGrid.")
             i.set_thumbnail(":/res/pipeline_step.png")
 
         if result.get("task"):
@@ -165,7 +165,7 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
 
             i.set_details("<br>".join(details))
             i.sg_data = d
-            i.setToolTip("Double click to see more details in Shotgun.")
+            i.setToolTip("Double click to see more details in ShotGrid.")
 
             if d.get("image"):
                 i.set_thumbnail(d.get("image"))
