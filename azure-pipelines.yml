@@ -42,6 +42,7 @@ jobs:
   parameters:
     has_ui_tests: true
     has_unit_tests: false
+    tk_core_ref: rebrand_poc
     additional_repositories:
       # These are required by tk-toolchain's tk-run-app
       - name: tk-framework-qtwidgets
