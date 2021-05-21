@@ -83,9 +83,7 @@ class AppDialog(QtGui.QWidget):
         self.ui.environment_browser.load({})
 
     def open_helpdesk(self):
-        QtGui.QDesktopServices.openUrl(
-            QtCore.QUrl(sgtk.support_url)
-        )
+        QtGui.QDesktopServices.openUrl(QtCore.QUrl(sgtk.support_url))
 
     def reload(self):
         """
