@@ -56,7 +56,7 @@
        <item>
         <widget class="QLabel" name="label_4">
          <property name="text">
-          <string>Current Context lists all Shotgun objects that together make up the Current Work Area. Double-click an item to access the object in Shotgun.</string>
+          <string>Current Context lists all ShotGrid objects that together make up the Current Work Area. Double-click an item to access the object in ShotGrid.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -142,7 +142,7 @@
        <item>
         <widget class="QLabel" name="label_3">
          <property name="text">
-          <string>The Environment file contains all settings and configurations for currently running Shotgun apps. The Engine provides core services, such as menu management and app startup.</string>
+          <string>The Environment file contains all settings and configurations for currently running ShotGrid apps. The Engine provides core services, such as menu management and app startup.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
