@@ -18,9 +18,12 @@ from tank_vendor.six.moves import urllib
 from tk_toolchain.cmd_line_tools import tk_run_app
 
 try:
+    import MA.UI
     from MA.UI import topwindows
 except ImportError:
     pytestmark = pytest.mark.skip()
+else:
+    print("Imported Successfully")
 
 
 from sgtk.authentication import ShotgunAuthenticator
@@ -66,6 +69,8 @@ def host_application(context):
     )
     try:
         yield
+    except Exception as e:
+        print(e)
     finally:
         # We're done. Grab all the output from the process
         # and print it so that is there was an error
@@ -178,6 +183,10 @@ class AboutBoxAppWrapper(object):
         """
         :param root:
         """
+        wind_parents = parent.__str__().split("\n")
+        print(
+            f">>>>>>> Top Windows are: {wind_parents!r}"
+        )
         self._root = parent["ShotGrid: Your Current Work Area"].get()
 
     def exists(self):
