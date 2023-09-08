@@ -41,7 +41,7 @@ jobs:
 - template: build-pipeline.yml@templates
   parameters:
     has_ui_tests: true
-    has_unit_tests: false
+    has_unit_tests: true
     additional_repositories:
       # These are required by tk-toolchain's tk-run-app
       - name: tk-framework-qtwidgets
