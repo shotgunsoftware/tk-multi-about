@@ -184,9 +184,7 @@ class AboutBoxAppWrapper(object):
         :param root:
         """
         wind_parents = parent.__str__().split("\n")
-        print(
-            f">>>>>>> Top Windows are: {wind_parents!r}"
-        )
+        print(f">>>>>>> Top Windows are: {wind_parents!r}")
         self._root = parent["ShotGrid: Your Current Work Area"].get()
 
     def exists(self):
