@@ -95,7 +95,9 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
 
             i.set_details("<br>".join(details))
             i.sg_data = d
-            i.setToolTip("Double click to see more details in ShotGrid.")
+            i.setToolTip(
+                "Double click to see more details in Flow Production Tracking."
+            )
 
             if d.get("image"):
                 i.set_thumbnail(d.get("image"))
@@ -114,7 +116,9 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             )
             i.set_details("<br>".join(details))
             i.sg_data = d
-            i.setToolTip("Double click to see more details in ShotGrid.")
+            i.setToolTip(
+                "Double click to see more details in Flow Production Tracking."
+            )
 
             if d.get("image"):
                 i.set_thumbnail(d.get("image"))
@@ -132,7 +136,9 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             )
             i.set_details("<br>".join(details))
             i.sg_data = d
-            i.setToolTip("Double click to see more details in ShotGrid.")
+            i.setToolTip(
+                "Double click to see more details in Flow Production Tracking."
+            )
 
             if d.get("image"):
                 i.set_thumbnail(d.get("image"))
@@ -148,7 +154,9 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
             )
             i.set_details("<br>".join(details))
             i.sg_data = d
-            i.setToolTip("Double click to see more details in ShotGrid.")
+            i.setToolTip(
+                "Double click to see more details in Flow Production Tracking."
+            )
             i.set_thumbnail(":/res/pipeline_step.png")
 
         if result.get("task"):
@@ -165,7 +173,9 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
 
             i.set_details("<br>".join(details))
             i.sg_data = d
-            i.setToolTip("Double click to see more details in ShotGrid.")
+            i.setToolTip(
+                "Double click to see more details in Flow Production Tracking."
+            )
 
             if d.get("image"):
                 i.set_thumbnail(d.get("image"))
