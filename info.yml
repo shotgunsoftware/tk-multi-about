@@ -21,7 +21,7 @@ supported_engines:
 requires_shotgun_fields:
 
 # More verbose description of this item
-display_name: "About ShotGrid Pipeline Toolkit"
+display_name: "About Flow Production Tracking"
 description: "Shows a breakdown of your current environment and configuration."
 
 # Required minimum versions for this item to run

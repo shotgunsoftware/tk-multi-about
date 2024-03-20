@@ -10,7 +10,7 @@ This repository is a part of the Shotgun Pipeline Toolkit.
 
 - For more information about this app and for release notes, *see the wiki section*.
 - For general information and documentation, click here: https://help.autodesk.com/view/SGDEV/ENU/?contextId=SA_INTEGRATIONS_USER_GUIDE
-- For information about Shotgun in general, click here: https://www.autodesk.com/products/shotgrid/overview
+- For information about Shotgun in general, click here: https://www.autodesk.com/products/flow-production-tracking/overview
 
 ## Using this app in your Setup
 All the apps that are part of our standard app suite are pushed to our App Store.
