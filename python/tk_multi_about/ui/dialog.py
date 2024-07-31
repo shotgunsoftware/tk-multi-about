@@ -1,131 +1,178 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'dialog.ui'
-#
-#      by: pyside-uic 0.2.15 running on PySide 1.2.2
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'dialog.ui'
+##
+## Created by: Qt User Interface Compiler version 5.15.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from tank.platform.qt import QtCore, QtGui
+from tank.platform.qt import QtCore
+for name, cls in QtCore.__dict__.items():
+    if isinstance(cls, type): globals()[name] = cls
+
+from tank.platform.qt import QtGui
+for name, cls in QtGui.__dict__.items():
+    if isinstance(cls, type): globals()[name] = cls
+
+
+from ..context_browser import ContextBrowserWidget
+from ..app_browser import AppBrowserWidget
+from ..environment_browser import EnvironmentBrowserWidget
+
+from  . import resources_rc
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
+        if not Dialog.objectName():
+            Dialog.setObjectName(u"Dialog")
         Dialog.resize(836, 487)
-        self.horizontalLayout = QtGui.QHBoxLayout(Dialog)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.context_overview_tab_widget = QtGui.QTabWidget(Dialog)
-        self.context_overview_tab_widget.setTabPosition(QtGui.QTabWidget.South)
-        self.context_overview_tab_widget.setObjectName("context_overview_tab_widget")
-        self.tab = QtGui.QWidget()
-        self.tab.setObjectName("tab")
-        self.verticalLayout_4 = QtGui.QVBoxLayout(self.tab)
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.horizontalLayout = QHBoxLayout(Dialog)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.context_overview_tab_widget = QTabWidget(Dialog)
+        self.context_overview_tab_widget.setObjectName(u"context_overview_tab_widget")
+        self.context_overview_tab_widget.setTabPosition(QTabWidget.South)
+        self.tab = QWidget()
+        self.tab.setObjectName(u"tab")
+        self.verticalLayout_4 = QVBoxLayout(self.tab)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.context_browser = ContextBrowserWidget(self.tab)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        self.context_browser.setObjectName(u"context_browser")
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.context_browser.sizePolicy().hasHeightForWidth())
         self.context_browser.setSizePolicy(sizePolicy)
-        self.context_browser.setMinimumSize(QtCore.QSize(380, 0))
-        self.context_browser.setObjectName("context_browser")
+        self.context_browser.setMinimumSize(QSize(380, 0))
+
         self.verticalLayout_4.addWidget(self.context_browser)
-        self.label_4 = QtGui.QLabel(self.tab)
+
+        self.label_4 = QLabel(self.tab)
+        self.label_4.setObjectName(u"label_4")
         self.label_4.setWordWrap(True)
-        self.label_4.setObjectName("label_4")
+
         self.verticalLayout_4.addWidget(self.label_4)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/res/icon_task.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+
+        icon = QIcon()
+        icon.addFile(u":/res/icon_task.png", QSize(), QIcon.Normal, QIcon.Off)
         self.context_overview_tab_widget.addTab(self.tab, icon, "")
-        self.tab_2 = QtGui.QWidget()
-        self.tab_2.setObjectName("tab_2")
-        self.verticalLayout_2 = QtGui.QVBoxLayout(self.tab_2)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.tab_2 = QWidget()
+        self.tab_2.setObjectName(u"tab_2")
+        self.verticalLayout_2 = QVBoxLayout(self.tab_2)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.app_browser = AppBrowserWidget(self.tab_2)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+        self.app_browser.setObjectName(u"app_browser")
         sizePolicy.setHeightForWidth(self.app_browser.sizePolicy().hasHeightForWidth())
         self.app_browser.setSizePolicy(sizePolicy)
-        self.app_browser.setMinimumSize(QtCore.QSize(380, 0))
-        self.app_browser.setObjectName("app_browser")
+        self.app_browser.setMinimumSize(QSize(380, 0))
+
         self.verticalLayout_2.addWidget(self.app_browser)
-        self.label_2 = QtGui.QLabel(self.tab_2)
+
+        self.label_2 = QLabel(self.tab_2)
+        self.label_2.setObjectName(u"label_2")
         self.label_2.setWordWrap(True)
-        self.label_2.setObjectName("label_2")
+
         self.verticalLayout_2.addWidget(self.label_2)
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/res/logo_color_16.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+
+        icon1 = QIcon()
+        icon1.addFile(u":/res/logo_color_16.png", QSize(), QIcon.Normal, QIcon.Off)
         self.context_overview_tab_widget.addTab(self.tab_2, icon1, "")
-        self.tab_3 = QtGui.QWidget()
-        self.tab_3.setObjectName("tab_3")
-        self.verticalLayout_3 = QtGui.QVBoxLayout(self.tab_3)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.tab_3 = QWidget()
+        self.tab_3.setObjectName(u"tab_3")
+        self.verticalLayout_3 = QVBoxLayout(self.tab_3)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.environment_browser = EnvironmentBrowserWidget(self.tab_3)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+        self.environment_browser.setObjectName(u"environment_browser")
         sizePolicy.setHeightForWidth(self.environment_browser.sizePolicy().hasHeightForWidth())
         self.environment_browser.setSizePolicy(sizePolicy)
-        self.environment_browser.setMinimumSize(QtCore.QSize(380, 0))
-        self.environment_browser.setObjectName("environment_browser")
+        self.environment_browser.setMinimumSize(QSize(380, 0))
+
         self.verticalLayout_3.addWidget(self.environment_browser)
-        self.label_3 = QtGui.QLabel(self.tab_3)
+
+        self.label_3 = QLabel(self.tab_3)
+        self.label_3.setObjectName(u"label_3")
         self.label_3.setWordWrap(True)
-        self.label_3.setObjectName("label_3")
+
         self.verticalLayout_3.addWidget(self.label_3)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/res/cog_white.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+
+        icon2 = QIcon()
+        icon2.addFile(u":/res/cog_white.png", QSize(), QIcon.Normal, QIcon.Off)
         self.context_overview_tab_widget.addTab(self.tab_3, icon2, "")
+
         self.horizontalLayout.addWidget(self.context_overview_tab_widget)
-        self.verticalLayout = QtGui.QVBoxLayout()
+
+        self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setSpacing(5)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.label = QtGui.QLabel(Dialog)
-        self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap(":/res/tank_logo.png"))
-        self.label.setObjectName("label")
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.label = QLabel(Dialog)
+        self.label.setObjectName(u"label")
+        self.label.setPixmap(QPixmap(u":/res/tank_logo.png"))
+
         self.verticalLayout.addWidget(self.label)
-        self.jump_to_fs = QtGui.QPushButton(Dialog)
-        self.jump_to_fs.setObjectName("jump_to_fs")
+
+        self.jump_to_fs = QPushButton(Dialog)
+        self.jump_to_fs.setObjectName(u"jump_to_fs")
+
         self.verticalLayout.addWidget(self.jump_to_fs)
-        self.reload_apps = QtGui.QPushButton(Dialog)
-        self.reload_apps.setObjectName("reload_apps")
+
+        self.reload_apps = QPushButton(Dialog)
+        self.reload_apps.setObjectName(u"reload_apps")
+
         self.verticalLayout.addWidget(self.reload_apps)
-        self.support = QtGui.QPushButton(Dialog)
-        self.support.setObjectName("support")
+
+        self.support = QPushButton(Dialog)
+        self.support.setObjectName(u"support")
+
         self.verticalLayout.addWidget(self.support)
-        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout.addItem(spacerItem)
-        self.close = QtGui.QPushButton(Dialog)
-        self.close.setObjectName("close")
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout.addItem(self.verticalSpacer)
+
+        self.close = QPushButton(Dialog)
+        self.close.setObjectName(u"close")
+
         self.verticalLayout.addWidget(self.close)
+
         self.horizontalLayout.addLayout(self.verticalLayout)
 
         self.retranslateUi(Dialog)
+
         self.context_overview_tab_widget.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+        QMetaObject.connectSlotsByName(Dialog)
+    # setupUi
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "The Current Sgtk Environment", None, QtGui.QApplication.UnicodeUTF8))
-        self.context_browser.setAccessibleName(QtGui.QApplication.translate("Dialog", "context_browser", None, QtGui.QApplication.UnicodeUTF8))
-        self.context_browser.setAccessibleDescription(QtGui.QApplication.translate("Dialog", "context_browser", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_4.setText(QtGui.QApplication.translate("Dialog", "Current Context lists all Flow Production Tracking objects that together make up the Current Work Area. Double-click an item to access the object in Flow Production Tracking.", None, QtGui.QApplication.UnicodeUTF8))
-        self.context_overview_tab_widget.setTabText(self.context_overview_tab_widget.indexOf(self.tab), QtGui.QApplication.translate("Dialog", "Current Context", None, QtGui.QApplication.UnicodeUTF8))
-        self.app_browser.setAccessibleName(QtGui.QApplication.translate("Dialog", "app_browser", None, QtGui.QApplication.UnicodeUTF8))
-        self.app_browser.setAccessibleDescription(QtGui.QApplication.translate("Dialog", "app_browser", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("Dialog", "Active Apps lists all currently active apps. Double-click an app to jump to its documentation.", None, QtGui.QApplication.UnicodeUTF8))
-        self.context_overview_tab_widget.setTabText(self.context_overview_tab_widget.indexOf(self.tab_2), QtGui.QApplication.translate("Dialog", "Active Apps", None, QtGui.QApplication.UnicodeUTF8))
-        self.environment_browser.setAccessibleName(QtGui.QApplication.translate("Dialog", "environment_browser", None, QtGui.QApplication.UnicodeUTF8))
-        self.environment_browser.setAccessibleDescription(QtGui.QApplication.translate("Dialog", "environment_browser", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_3.setText(QtGui.QApplication.translate("Dialog", "The Environment file contains all settings and configurations for currently running Flow Production Tracking apps. The Engine provides core services, such as menu management and app startup.", None, QtGui.QApplication.UnicodeUTF8))
-        self.context_overview_tab_widget.setTabText(self.context_overview_tab_widget.indexOf(self.tab_3), QtGui.QApplication.translate("Dialog", "Environment", None, QtGui.QApplication.UnicodeUTF8))
-        self.jump_to_fs.setText(QtGui.QApplication.translate("Dialog", "Jump to the File System", None, QtGui.QApplication.UnicodeUTF8))
-        self.reload_apps.setText(QtGui.QApplication.translate("Dialog", "Reload Engine and Apps", None, QtGui.QApplication.UnicodeUTF8))
-        self.support.setText(QtGui.QApplication.translate("Dialog", "Documentation and Support", None, QtGui.QApplication.UnicodeUTF8))
-        self.close.setText(QtGui.QApplication.translate("Dialog", "Close", None, QtGui.QApplication.UnicodeUTF8))
-
-from ..context_browser import ContextBrowserWidget
-from ..environment_browser import EnvironmentBrowserWidget
-from ..app_browser import AppBrowserWidget
-from . import resources_rc
+        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"The Current Sgtk Environment", None))
+#if QT_CONFIG(accessibility)
+        self.context_browser.setAccessibleName(QCoreApplication.translate("Dialog", u"context_browser", None))
+#endif // QT_CONFIG(accessibility)
+#if QT_CONFIG(accessibility)
+        self.context_browser.setAccessibleDescription(QCoreApplication.translate("Dialog", u"context_browser", None))
+#endif // QT_CONFIG(accessibility)
+        self.label_4.setText(QCoreApplication.translate("Dialog", u"Current Context lists all Flow Production Tracking objects that together make up the Current Work Area. Double-click an item to access the object in Flow Production Tracking.", None))
+        self.context_overview_tab_widget.setTabText(self.context_overview_tab_widget.indexOf(self.tab), QCoreApplication.translate("Dialog", u"Current Context", None))
+#if QT_CONFIG(accessibility)
+        self.app_browser.setAccessibleName(QCoreApplication.translate("Dialog", u"app_browser", None))
+#endif // QT_CONFIG(accessibility)
+#if QT_CONFIG(accessibility)
+        self.app_browser.setAccessibleDescription(QCoreApplication.translate("Dialog", u"app_browser", None))
+#endif // QT_CONFIG(accessibility)
+        self.label_2.setText(QCoreApplication.translate("Dialog", u"Active Apps lists all currently active apps. Double-click an app to jump to its documentation.", None))
+        self.context_overview_tab_widget.setTabText(self.context_overview_tab_widget.indexOf(self.tab_2), QCoreApplication.translate("Dialog", u"Active Apps", None))
+#if QT_CONFIG(accessibility)
+        self.environment_browser.setAccessibleName(QCoreApplication.translate("Dialog", u"environment_browser", None))
+#endif // QT_CONFIG(accessibility)
+#if QT_CONFIG(accessibility)
+        self.environment_browser.setAccessibleDescription(QCoreApplication.translate("Dialog", u"environment_browser", None))
+#endif // QT_CONFIG(accessibility)
+        self.label_3.setText(QCoreApplication.translate("Dialog", u"The Environment file contains all settings and configurations for currently running Flow Production Tracking apps. The Engine provides core services, such as menu management and app startup.", None))
+        self.context_overview_tab_widget.setTabText(self.context_overview_tab_widget.indexOf(self.tab_3), QCoreApplication.translate("Dialog", u"Environment", None))
+        self.label.setText("")
+        self.jump_to_fs.setText(QCoreApplication.translate("Dialog", u"Jump to the File System", None))
+        self.reload_apps.setText(QCoreApplication.translate("Dialog", u"Reload Engine and Apps", None))
+        self.support.setText(QCoreApplication.translate("Dialog", u"Documentation and Support", None))
+        self.close.setText(QCoreApplication.translate("Dialog", u"Close", None))
+    # retranslateUi
