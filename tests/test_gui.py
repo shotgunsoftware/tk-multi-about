@@ -14,7 +14,8 @@ import time
 import os
 import sys
 import sgtk
-from tank_vendor.six.moves import urllib
+
+from urllib.parse import urlparse
 from tk_toolchain.cmd_line_tools import tk_run_app
 
 try:
@@ -235,7 +236,7 @@ def test_context_tab(about_box):
     """
     about_box.select_context_tab()
     user = authentication.get_toolkit_user()
-    server = urllib.parse.urlparse(user.host).netloc
+    server = urlparse(user.host).netloc
     # The first line contains the server name, which we do not want to display during
     # automation on the cloud.
     assert about_box.context_browser.items[1:] == [
