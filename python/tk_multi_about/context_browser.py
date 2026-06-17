@@ -185,7 +185,7 @@ class ContextBrowserWidget(browser_widget.BrowserWidget):
         Adds a list item. Returns the created object.
         We override the base class so we can make the urls clickable
         """
-        widget = super(ContextBrowserWidget, self).add_item(item_class)
+        widget = super().add_item(item_class)
         widget.ui.details.setOpenExternalLinks(True)
         return widget
 
