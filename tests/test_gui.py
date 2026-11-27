@@ -54,7 +54,7 @@ def host_application(context):
             "-m",
             "tk_toolchain.cmd_line_tools.tk_run_app",
             # Allows the test for this application to be invoked from
-            # another repository, namely the tk-framework-widget repo,
+            # another repository, namely the tk-framework-qtwidgets repo,
             # by specifying that the repo detection should start
             # at the specified location.
             "--location",
@@ -108,7 +108,7 @@ class BrowserWidget(object):
     Allows to automate GUI interactions with a browser widget.
     """
 
-    # TODO: This should be refactored at some point inside the tk-framework-widget
+    # TODO: This should be refactored at some point inside the tk-framework-qtwidgets
     # framework, but since this is our first use of the wrapper, let's not over do this.
     # Besides, the breakdown app has some really custom behaviour, so let's not
     # commit to an interface too quickly.

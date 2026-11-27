@@ -45,5 +45,4 @@ jobs:
     additional_repositories:
       # These are required by tk-toolchain's tk-run-app
       - name: tk-framework-qtwidgets
-      - name: tk-framework-widget
       - name: tk-framework-shotgunutils

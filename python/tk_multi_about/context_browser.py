@@ -17,7 +17,9 @@ import threading
 
 from sgtk.platform.qt import QtCore, QtGui
 
-browser_widget = sgtk.platform.import_framework("tk-framework-widget", "browser_widget")
+browser_widget = sgtk.platform.import_framework(
+    "tk-framework-qtwidgets", "browser_widget"
+)
 
 
 class ContextBrowserWidget(browser_widget.BrowserWidget):
